@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editar producto | Administrador Huerto Verde</title>
+  <link rel="stylesheet" href="../css/estilos.css">
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+
+<div class="layout-admin">
+
+  <nav class="menu-admin" aria-label="Menú del administrador">
+    <a class="brand" href="index.html">
+      <!-- IMAGEN: logo de la tienda, 32x32 px -> ../assets/img/logo.svg -->
+      <span class="logo-box" aria-hidden="true"></span>
+      <span>Huerto Verde</span>
+    </a>
+    <ul>
+      <li><a href="index.html">Dashboard</a></li>
+      <li><a href="productos.html" aria-current="page">Productos</a></li>
+      <li><a href="usuarios.html">Usuarios</a></li>
+    </ul>
+    <div class="menu-pie">
+      <ul>
+        <li><a href="../index.html">Ir a la tienda</a></li>
+        <li><a href="../login.html">Cerrar sesión</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="contenido-admin">
+
+    <header class="encabezado-admin">
+      <h1>Editar producto</h1>
+      <div class="acciones-admin">
+        <a class="btn" href="producto-ver.html?codigo=VE-002">Ver ficha</a>
+        <a class="btn" href="productos.html">Volver al listado</a>
+      </div>
+    </header>
+
+    <main>
+
+      <!-- ============================================================
+           FORMULARIO EDITAR PRODUCTO
+           Mismas reglas de validación que "Nuevo producto".
+           JS: cargar los datos del producto indicado en ?codigo= y
+           precargar cada campo del formulario.
+           ============================================================ -->
+      <section class="caja-form" style="max-width:720px;margin-left:0;">
+        <h2>Datos del producto VE-002</h2>
+
+        <form action="#" method="post" novalidate enctype="multipart/form-data">
+
+          <div class="fila">
+            <div class="campo">
+              <label for="codigo">Código producto</label>
+              <input type="text" id="codigo" name="codigo" minlength="3" value="VE-002"
+                     autocomplete="off" aria-describedby="ayuda-codigo error-codigo" required>
+              <small class="ayuda" id="ayuda-codigo">Mínimo 3 caracteres. Debe ser único.</small>
+              <p class="error" id="error-codigo" role="alert" hidden></p>
+            </div>
+
+            <div class="campo">
+              <label for="categoria">Categoría</label>
+              <select id="categoria" name="categoria" aria-describedby="error-categoria" required>
+                <option value="">-- Seleccione la categoría --</option>
+                <option value="frutas">Frutas</option>
+                <option value="verduras" selected>Verduras</option>
+                <option value="organicos">Orgánicos</option>
+                <option value="despensa">Despensa</option>
+              </select>
+              <p class="error" id="error-categoria" role="alert" hidden></p>
+            </div>
+          </div>
+
+          <div class="campo">
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" name="nombre" maxlength="100" value="Palta Hass"
+                   aria-describedby="error-nombre" required>
+            <p class="error" id="error-nombre" role="alert" hidden></p>
+          </div>
+
+          <div class="campo">
+            <label for="descripcion">Descripción (opcional)</label>
+            <textarea id="descripcion" name="descripcion" rows="5" maxlength="500"
+                      aria-describedby="ayuda-descripcion error-descripcion">Palta Hass de calibre mediano, cosechada en Quillota. Cremosa, ideal para untar. Se despacha con punto de maduración de 2 a 3 días.</textarea>
+            <small class="ayuda" id="ayuda-descripcion">
+              Máximo 500 caracteres. Quedan <span data-contador="descripcion">348</span>.
+            </small>
+            <p class="error" id="error-descripcion" role="alert" hidden></p>
+          </div>
+
+          <div class="fila">
+            <div class="campo">
+              <label for="precio">Precio</label>
+              <input type="number" id="precio" name="precio" min="0" step="0.01" value="4990"
+                     inputmode="decimal" aria-describedby="ayuda-precio error-precio" required>
+              <small class="ayuda" id="ayuda-precio">Mínimo 0. Un precio 0 se considera producto FREE.</small>
+              <p class="error" id="error-precio" role="alert" hidden></p>
+            </div>
+
+            <div class="campo">
+              <label for="stock">Stock</label>
+              <input type="number" id="stock" name="stock" min="0" step="1" value="4"
+                     inputmode="numeric" aria-describedby="ayuda-stock error-stock" required>
+              <small class="ayuda" id="ayuda-stock">Sólo números enteros.</small>
+              <p class="error" id="error-stock" role="alert" hidden></p>
+            </div>
+
+            <div class="campo">
+              <label for="stock-critico">Stock crítico (opcional)</label>
+              <input type="number" id="stock-critico" name="stock-critico" min="0" step="1" value="10"
+                     inputmode="numeric" aria-describedby="ayuda-stock-critico error-stock-critico">
+              <small class="ayuda" id="ayuda-stock-critico">Se muestra una alerta cuando el stock sea igual o inferior.</small>
+              <p class="error" id="error-stock-critico" role="alert" hidden></p>
+            </div>
+          </div>
+
+          <!-- Alerta activa: el stock (4) está por debajo del stock crítico (10) -->
+          <p class="alerta-stock" role="status">
+            Atención: el stock actual (4) es inferior al stock crítico configurado (10).
+          </p>
+
+          <div class="campo">
+            <label for="imagen">Reemplazar imagen (opcional)</label>
+            <input type="file" id="imagen" name="imagen" accept="image/png, image/jpeg, image/webp"
+                   aria-describedby="ayuda-imagen error-imagen">
+            <small class="ayuda" id="ayuda-imagen">Deja el campo vacío para conservar la imagen actual.</small>
+            <p class="error" id="error-imagen" role="alert" hidden></p>
+
+            <!-- IMAGEN: imagen actual del producto, 200x150 px -> ../assets/img/palta.jpg -->
+            <div class="ph ph-mini">IMAGEN ACTUAL (200x150)</div>
+          </div>
+
+          <div class="campo">
+            <label for="publicado" style="display:inline">
+              <input type="checkbox" id="publicado" name="publicado" style="width:auto" checked>
+              Publicar en la tienda
+            </label>
+          </div>
+
+          <p>
+            <button type="submit" class="btn-principal">Guardar cambios</button>
+            <a class="btn" href="productos.html">Cancelar</a>
+            <!-- JS: confirmar antes de eliminar definitivamente -->
+            <button type="button" data-accion="eliminar" data-codigo="VE-002">Eliminar producto</button>
+          </p>
+        </form>
+      </section>
+
+    </main>
+
+    <footer>
+      <p><small>Panel de administración · Mockup entrega 1 DSY1104</small></p>
+    </footer>
+
+  </div>
+</div>
+
+</body>
+</html>

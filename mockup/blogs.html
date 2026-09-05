@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blogs | Huerto Verde</title>
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <a class="brand" href="index.html">
+      <!-- IMAGEN: logo de la tienda, 40x40 px -->
+      <span class="logo-box" aria-hidden="true"></span>
+      <span>Huerto Verde</span>
+    </a>
+    <nav aria-label="Navegación principal">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="productos.html">Productos</a></li>
+        <li><a href="nosotros.html">Nosotros</a></li>
+        <li><a href="blogs.html" aria-current="page">Blogs</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+    </nav>
+    <a class="cart-link" href="carrito.html">
+      <!-- IMAGEN: icono de carrito, 24x24 px -->
+      <span class="icono-carrito" aria-hidden="true"></span>
+      Cart (<span data-cart-count>0</span>)
+    </a>
+  </header>
+
+  <main class="contenedor">
+    <h1 class="centrado">Noticias importantes</h1>
+    <p class="centrado">Datos curiosos y novedades del mundo de las frutas y verduras.</p>
+
+    <!-- ============================================================
+         LISTADO DE BLOGS
+         Contenido de cada componente: imagen, título y descripción corta.
+         ============================================================ -->
+
+    <article class="articulo-blog">
+      <div>
+        <h2>Caso curioso #1: la manzana que flota</h2>
+        <p>
+          Una manzana es un 25 % aire, y por eso flota en el agua. Ese mismo aire
+          explica por qué se magulla tan rápido cuando la transportamos sin
+          cuidado. Te contamos cómo elegimos las cajas para que lleguen intactas.
+        </p>
+        <p><a class="btn" href="blog-1.html">Ver caso</a></p>
+        <p><small><time datetime="2026-08-12">12 de agosto de 2026</time> · Datos curiosos</small></p>
+      </div>
+
+      <!-- IMAGEN: portada del blog, 640x400 px -> assets/img/blog-1.jpg
+           <img src="assets/img/blog-1.jpg" alt="Manzanas flotando en un tambor con agua" width="640" height="400"> -->
+      <div class="ph ph-alto">IMAGEN DEL BLOG (640x400)</div>
+    </article>
+
+    <article class="articulo-blog">
+      <div>
+        <h2>Caso curioso #2: el plátano es una hierba</h2>
+        <p>
+          Botánicamente el plátano no crece en un árbol: la planta es la hierba
+          más alta del mundo y puede superar los 7 metros. Revisamos qué implica
+          eso para la cosecha y por qué el plátano llega verde a Chile.
+        </p>
+        <p><a class="btn" href="blog-2.html">Ver caso</a></p>
+        <p><small><time datetime="2026-08-28">28 de agosto de 2026</time> · Datos curiosos</small></p>
+      </div>
+
+      <!-- IMAGEN: portada del blog, 640x400 px -> assets/img/blog-2.jpg
+           <img src="assets/img/blog-2.jpg" alt="Plantación de plátanos vista desde abajo" width="640" height="400"> -->
+      <div class="ph ph-alto">IMAGEN DEL BLOG (640x400)</div>
+    </article>
+
+  </main>
+
+  <footer class="site-footer">
+    <div>
+      <p><strong>Huerto Verde</strong></p>
+      <!-- IMAGEN: logos de medios de pago, 48x30 px cada uno -->
+      <ul class="medios-pago" aria-label="Medios de pago aceptados">
+        <li>VISA</li>
+        <li>MASTERCARD</li>
+        <li>REDCOMPRA</li>
+      </ul>
+    </div>
+    <nav aria-label="Categorías">
+      <h2>Categorías</h2>
+      <ul>
+        <li><a href="productos.html?categoria=frutas">Frutas</a></li>
+        <li><a href="productos.html?categoria=verduras">Verduras</a></li>
+        <li><a href="productos.html?categoria=organicos">Orgánicos</a></li>
+      </ul>
+    </nav>
+    <div>
+      <h2>Mantente en contacto</h2>
+      <form class="newsletter" action="#" method="post" novalidate>
+        <label class="oculto-visual" for="newsletter-correo">Correo electrónico</label>
+        <input type="email" id="newsletter-correo" name="correo" placeholder="Ingresa tu correo"
+               maxlength="100" autocomplete="email" required>
+        <button type="submit">Suscribirse</button>
+      </form>
+      <p><small>&copy; 2026 Huerto Verde · Mockup entrega 1 DSY1104</small></p>
+    </div>
+  </footer>
+
+</body>
+</html>

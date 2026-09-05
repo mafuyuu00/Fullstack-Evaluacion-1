@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacto | Huerto Verde</title>
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <a class="brand" href="index.html">
+      <!-- IMAGEN: logo de la tienda, 40x40 px -->
+      <span class="logo-box" aria-hidden="true"></span>
+      <span>Huerto Verde</span>
+    </a>
+    <nav aria-label="Navegación principal">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="productos.html">Productos</a></li>
+        <li><a href="nosotros.html">Nosotros</a></li>
+        <li><a href="blogs.html">Blogs</a></li>
+        <li><a href="contacto.html" aria-current="page">Contacto</a></li>
+      </ul>
+    </nav>
+    <a class="cart-link" href="carrito.html">
+      <!-- IMAGEN: icono de carrito, 24x24 px -->
+      <span class="icono-carrito" aria-hidden="true"></span>
+      Cart (<span data-cart-count>0</span>)
+    </a>
+  </header>
+
+  <main class="contenedor">
+
+    <div class="centrado">
+      <!-- IMAGEN: logo grande de la empresa, 220x140 px -> assets/img/logo-grande.svg -->
+      <div class="ph" style="max-width:220px;margin:24px auto 8px;">LOGO EMPRESA (220x140)</div>
+      <p><strong>Huerto Verde</strong></p>
+    </div>
+
+    <!-- ============================================================
+         FORMULARIO DE CONTACTO
+
+         REGLAS DE VALIDACIÓN (JS):
+           Nombre      requerido · max 100
+           Correo      max 100 · sólo @duoc.cl, @profesor.duoc.cl y @gmail.com
+           Comentario  requerido · max 500
+         ============================================================ -->
+    <section class="caja-form" aria-labelledby="titulo-contacto">
+      <h1 id="titulo-contacto">Formulario de contacto</h1>
+
+      <form action="#" method="post" novalidate autocomplete="on">
+
+        <div class="campo">
+          <label for="nombre">Nombre completo</label>
+          <input type="text" id="nombre" name="nombre" maxlength="100"
+                 autocomplete="name" aria-describedby="error-nombre" required>
+          <p class="error" id="error-nombre" role="alert" hidden></p>
+        </div>
+
+        <div class="campo">
+          <label for="correo">Correo</label>
+          <input type="email" id="correo" name="correo" maxlength="100"
+                 autocomplete="email" aria-describedby="ayuda-correo error-correo">
+          <small class="ayuda" id="ayuda-correo">Opcional. Sólo dominios @duoc.cl, @profesor.duoc.cl y @gmail.com</small>
+          <p class="error" id="error-correo" role="alert" hidden></p>
+        </div>
+
+        <div class="campo">
+          <label for="motivo">Motivo</label>
+          <select id="motivo" name="motivo">
+            <option value="consulta" selected>Consulta general</option>
+            <option value="pedido">Estado de un pedido</option>
+            <option value="reclamo">Reclamo</option>
+            <option value="sugerencia">Sugerencia</option>
+          </select>
+        </div>
+
+        <div class="campo">
+          <label for="comentario">Comentario</label>
+          <textarea id="comentario" name="comentario" rows="6" maxlength="500"
+                    aria-describedby="ayuda-comentario error-comentario" required></textarea>
+          <!-- JS: actualizar el contador de caracteres restantes en vivo -->
+          <small class="ayuda" id="ayuda-comentario">
+            Máximo 500 caracteres. Quedan <span data-contador="comentario">500</span>.
+          </small>
+          <p class="error" id="error-comentario" role="alert" hidden></p>
+        </div>
+
+        <p class="centrado">
+          <button type="submit" class="btn-principal">Enviar mensaje</button>
+        </p>
+      </form>
+    </section>
+
+    <!-- Datos de contacto directo -->
+    <section aria-labelledby="titulo-datos">
+      <h2 id="titulo-datos">Otros canales</h2>
+      <address>
+        Av. Siempre Fresca 1234, Santiago de Chile<br>
+        Teléfono: <a href="tel:+56223456789">+56 2 2345 6789</a><br>
+        Correo: <a href="mailto:contacto@huertoverde.cl">contacto@huertoverde.cl</a>
+      </address>
+      <p>Atención de lunes a sábado, de 9:00 a 19:00 horas.</p>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div>
+      <p><strong>Huerto Verde</strong></p>
+      <!-- IMAGEN: logos de medios de pago, 48x30 px cada uno -->
+      <ul class="medios-pago" aria-label="Medios de pago aceptados">
+        <li>VISA</li>
+        <li>MASTERCARD</li>
+        <li>REDCOMPRA</li>
+      </ul>
+    </div>
+    <nav aria-label="Categorías">
+      <h2>Categorías</h2>
+      <ul>
+        <li><a href="productos.html?categoria=frutas">Frutas</a></li>
+        <li><a href="productos.html?categoria=verduras">Verduras</a></li>
+        <li><a href="productos.html?categoria=organicos">Orgánicos</a></li>
+      </ul>
+    </nav>
+    <div>
+      <h2>Mantente en contacto</h2>
+      <form class="newsletter" action="#" method="post" novalidate>
+        <label class="oculto-visual" for="newsletter-correo">Correo electrónico</label>
+        <input type="email" id="newsletter-correo" name="correo" placeholder="Ingresa tu correo"
+               maxlength="100" autocomplete="email" required>
+        <button type="submit">Suscribirse</button>
+      </form>
+      <p><small>&copy; 2026 Huerto Verde · Mockup entrega 1 DSY1104</small></p>
+    </div>
+  </footer>
+
+</body>
+</html>

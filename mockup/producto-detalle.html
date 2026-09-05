@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manzana Fuji | Huerto Verde</title>
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <a class="brand" href="index.html">
+      <!-- IMAGEN: logo de la tienda, 40x40 px -->
+      <span class="logo-box" aria-hidden="true"></span>
+      <span>Huerto Verde</span>
+    </a>
+    <nav aria-label="Navegación principal">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="productos.html">Productos</a></li>
+        <li><a href="nosotros.html">Nosotros</a></li>
+        <li><a href="blogs.html">Blogs</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+    </nav>
+    <a class="cart-link" href="carrito.html">
+      <!-- IMAGEN: icono de carrito, 24x24 px -->
+      <span class="icono-carrito" aria-hidden="true"></span>
+      Cart (<span data-cart-count>0</span>)
+    </a>
+  </header>
+
+  <main class="contenedor">
+
+    <!-- Migas de pan: Home > Categoría > Producto -->
+    <nav class="breadcrumb" aria-label="Ruta de navegación">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li aria-hidden="true">&gt;</li>
+        <li><a href="productos.html?categoria=frutas">Frutas</a></li>
+        <li aria-hidden="true">&gt;</li>
+        <li><span aria-current="page">Manzana Fuji</span></li>
+      </ul>
+    </nav>
+
+    <!-- ============================================================
+         DETALLE DEL PRODUCTO
+         JS: los datos se leen del arreglo de productos usando el
+         parámetro ?codigo= de la URL.
+         ============================================================ -->
+    <article class="detalle-producto">
+
+      <div class="galeria">
+        <!-- IMAGEN: foto principal del producto, 800x600 px
+             -> assets/img/manzana-fuji-grande.jpg
+             <img src="assets/img/manzana-fuji-grande.jpg" alt="Manzanas Fuji apiladas en un cajón de madera" width="800" height="600"> -->
+        <div class="ph ph-alto">IMAGEN PRINCIPAL DEL PRODUCTO (800x600)</div>
+
+        <!-- Miniaturas de la galería -->
+        <ul class="miniaturas" aria-label="Otras vistas del producto">
+          <!-- IMAGEN: miniatura 1, 120x90 px -> assets/img/manzana-fuji-1.jpg -->
+          <li><div class="ph ph-mini">MIN 1</div></li>
+          <!-- IMAGEN: miniatura 2, 120x90 px -> assets/img/manzana-fuji-2.jpg -->
+          <li><div class="ph ph-mini">MIN 2</div></li>
+          <!-- IMAGEN: miniatura 3, 120x90 px -> assets/img/manzana-fuji-3.jpg -->
+          <li><div class="ph ph-mini">MIN 3</div></li>
+        </ul>
+      </div>
+
+      <div class="compra">
+        <h1>Manzana Fuji</h1>
+        <p class="precio"><strong>$1.290</strong> por kilo</p>
+
+        <dl>
+          <dt>Código</dt>
+          <dd>FR-001</dd>
+          <dt>Categoría</dt>
+          <dd>Frutas</dd>
+          <dt>Disponibilidad</dt>
+          <dd>En stock (48 kilos)</dd>
+        </dl>
+
+        <h2>Descripción</h2>
+        <p>
+          Las manzanas son una fruta deliciosa y versátil, apreciada en todo el
+          mundo por su sabor refrescante y sus numerosos beneficios para la salud.
+          Disponibles en una variedad de colores, desde el rojo vibrante hasta el
+          verde brillante y el amarillo dorado, son una opción perfecta para
+          cualquier ocasión, ya sea como refrigerio saludable o como ingrediente
+          de repostería.
+        </p>
+
+        <!-- JS: el botón añade al carrito la cantidad seleccionada
+             y persiste el estado en localStorage -->
+        <form action="#" method="post">
+          <div class="campo">
+            <label for="cantidad">Cantidad</label>
+            <select id="cantidad" name="cantidad">
+              <option value="1" selected>1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </div>
+          <button type="submit" class="btn-principal btn-bloque"
+                  data-accion="añadir" data-codigo="FR-001">Añadir al carrito</button>
+        </form>
+
+        <p><a href="carrito.html">Ir al carrito de compras</a></p>
+      </div>
+    </article>
+
+    <!-- ============================================================
+         PRODUCTOS RELACIONADOS
+         ============================================================ -->
+    <section aria-labelledby="titulo-relacionados">
+      <h2 id="titulo-relacionados">Productos relacionados</h2>
+      <ul class="grilla-productos" data-lista="relacionados">
+        <li class="card-producto">
+          <a href="producto-detalle.html?codigo=FR-002">
+            <!-- IMAGEN: foto del producto, 300x200 px -> assets/img/platano.jpg -->
+            <div class="ph">IMAGEN PRODUCTO (300x200)</div>
+            <h3>Plátano de Ecuador</h3>
+          </a>
+          <p class="precio">$1.490</p>
+        </li>
+        <li class="card-producto">
+          <a href="producto-detalle.html?codigo=FR-003">
+            <!-- IMAGEN: foto del producto, 300x200 px -> assets/img/naranja.jpg -->
+            <div class="ph">IMAGEN PRODUCTO (300x200)</div>
+            <h3>Naranja Valencia</h3>
+          </a>
+          <p class="precio">$3.590</p>
+        </li>
+        <li class="card-producto">
+          <a href="producto-detalle.html?codigo=FR-004">
+            <!-- IMAGEN: foto del producto, 300x200 px -> assets/img/frutilla.jpg -->
+            <div class="ph">IMAGEN PRODUCTO (300x200)</div>
+            <h3>Frutilla</h3>
+          </a>
+          <p class="precio">$2.490</p>
+        </li>
+        <li class="card-producto">
+          <a href="producto-detalle.html?codigo=VE-002">
+            <!-- IMAGEN: foto del producto, 300x200 px -> assets/img/palta.jpg -->
+            <div class="ph">IMAGEN PRODUCTO (300x200)</div>
+            <h3>Palta Hass</h3>
+          </a>
+          <p class="precio">$4.990</p>
+        </li>
+        <li class="card-producto">
+          <a href="producto-detalle.html?codigo=OR-001">
+            <!-- IMAGEN: foto del producto, 300x200 px -> assets/img/mix-organico.jpg -->
+            <div class="ph">IMAGEN PRODUCTO (300x200)</div>
+            <h3>Mix orgánico</h3>
+          </a>
+          <p class="precio">$8.990</p>
+        </li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div>
+      <p><strong>Huerto Verde</strong></p>
+      <!-- IMAGEN: logos de medios de pago, 48x30 px cada uno -->
+      <ul class="medios-pago" aria-label="Medios de pago aceptados">
+        <li>VISA</li>
+        <li>MASTERCARD</li>
+        <li>REDCOMPRA</li>
+      </ul>
+    </div>
+    <nav aria-label="Categorías">
+      <h2>Categorías</h2>
+      <ul>
+        <li><a href="productos.html?categoria=frutas">Frutas</a></li>
+        <li><a href="productos.html?categoria=verduras">Verduras</a></li>
+        <li><a href="productos.html?categoria=organicos">Orgánicos</a></li>
+      </ul>
+    </nav>
+    <div>
+      <h2>Mantente en contacto</h2>
+      <form class="newsletter" action="#" method="post" novalidate>
+        <label class="oculto-visual" for="newsletter-correo">Correo electrónico</label>
+        <input type="email" id="newsletter-correo" name="correo" placeholder="Ingresa tu correo"
+               maxlength="100" autocomplete="email" required>
+        <button type="submit">Suscribirse</button>
+      </form>
+      <p><small>&copy; 2026 Huerto Verde · Mockup entrega 1 DSY1104</small></p>
+    </div>
+  </footer>
+
+</body>
+</html>
