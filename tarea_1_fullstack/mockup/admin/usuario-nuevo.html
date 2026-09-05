@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nuevo usuario | Administrador Huerto Verde</title>
+  <link rel="stylesheet" href="../css/estilos.css">
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+
+<div class="layout-admin">
+
+  <nav class="menu-admin" aria-label="Menú del administrador">
+    <a class="brand" href="index.html">
+      <!-- IMAGEN: logo de la tienda, 32x32 px -> ../assets/img/logo.svg -->
+      <span class="logo-box" aria-hidden="true"></span>
+      <span>Huerto Verde</span>
+    </a>
+    <ul>
+      <li><a href="index.html">Dashboard</a></li>
+      <li><a href="productos.html">Productos</a></li>
+      <li><a href="usuarios.html" aria-current="page">Usuarios</a></li>
+    </ul>
+    <div class="menu-pie">
+      <ul>
+        <li><a href="../index.html">Ir a la tienda</a></li>
+        <li><a href="../login.html">Cerrar sesión</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="contenido-admin">
+
+    <header class="encabezado-admin">
+      <h1>Nuevo usuario</h1>
+      <div class="acciones-admin">
+        <a class="btn" href="usuarios.html">Volver al listado</a>
+      </div>
+    </header>
+
+    <main>
+
+      <!-- ============================================================
+           FORMULARIO NUEVO USUARIO
+           Es el mismo conjunto de campos del registro público
+           (registro.html), más el campo "Tipo de usuario", que sólo
+           existe en la vista administrativa.
+
+           REGLAS DE VALIDACIÓN (JS):
+             Run              requerido · sin puntos ni guion (ej: 19011022K)
+                              min 7 · max 9 · dígito verificador válido
+             Nombre           requerido · max 50
+             Apellidos        requerido · max 100
+             Correo           requerido · max 100
+                              sólo @duoc.cl, @profesor.duoc.cl y @gmail.com
+             Fecha nacimiento opcional
+             Tipo de usuario  requerido · Administrador, Cliente o Vendedor
+             Región / Comuna  desde el arreglo de regiones de JS;
+                              al cambiar la región se recargan las comunas
+             Dirección        requerido · max 300
+           ============================================================ -->
+      <section class="caja-form" style="max-width:720px;margin-left:0;">
+        <h2>Datos del usuario</h2>
+
+        <form action="#" method="post" novalidate autocomplete="on">
+
+          <div class="campo">
+            <label for="run">Run</label>
+            <input type="text" id="run" name="run" minlength="7" maxlength="9"
+                   placeholder="19011022K" autocomplete="off"
+                   aria-describedby="ayuda-run error-run" required>
+            <small class="ayuda" id="ayuda-run">Sin puntos ni guion. Ejemplo: 19011022K</small>
+            <p class="error" id="error-run" role="alert" hidden></p>
+          </div>
+
+          <div class="fila">
+            <div class="campo">
+              <label for="nombre">Nombre</label>
+              <input type="text" id="nombre" name="nombre" maxlength="50"
+                     autocomplete="given-name" aria-describedby="ayuda-nombre error-nombre" required>
+              <small class="ayuda" id="ayuda-nombre">Máximo 50 caracteres.</small>
+              <p class="error" id="error-nombre" role="alert" hidden></p>
+            </div>
+
+            <div class="campo">
+              <label for="apellidos">Apellidos</label>
+              <input type="text" id="apellidos" name="apellidos" maxlength="100"
+                     autocomplete="family-name" aria-describedby="ayuda-apellidos error-apellidos" required>
+              <small class="ayuda" id="ayuda-apellidos">Máximo 100 caracteres.</small>
+              <p class="error" id="error-apellidos" role="alert" hidden></p>
+            </div>
+          </div>
+
+          <div class="campo">
+            <label for="correo">Correo</label>
+            <input type="email" id="correo" name="correo" maxlength="100"
+                   autocomplete="email" aria-describedby="ayuda-correo error-correo" required>
+            <small class="ayuda" id="ayuda-correo">Sólo dominios @duoc.cl, @profesor.duoc.cl y @gmail.com</small>
+            <p class="error" id="error-correo" role="alert" hidden></p>
+          </div>
+
+          <div class="fila">
+            <div class="campo">
+              <label for="fecha-nacimiento">Fecha de nacimiento (opcional)</label>
+              <input type="date" id="fecha-nacimiento" name="fecha-nacimiento" autocomplete="bday">
+              <p class="error" id="error-fecha-nacimiento" role="alert" hidden></p>
+            </div>
+
+            <div class="campo">
+              <label for="tipo-usuario">Tipo de usuario</label>
+              <!-- Perfiles del sistema:
+                   Administrador -> acceso total
+                   Vendedor      -> lista y detalle de productos y órdenes
+                   Cliente       -> sólo la tienda -->
+              <select id="tipo-usuario" name="tipo-usuario" aria-describedby="error-tipo-usuario" required>
+                <option value="">-- Seleccione el perfil --</option>
+                <option value="administrador">Administrador</option>
+                <option value="vendedor">Vendedor</option>
+                <option value="cliente" selected>Cliente</option>
+              </select>
+              <p class="error" id="error-tipo-usuario" role="alert" hidden></p>
+            </div>
+          </div>
+
+          <div class="fila">
+            <div class="campo">
+              <label for="region">Región</label>
+              <!-- JS: las <option> se generan desde el arreglo de regiones
+                   entregado como material complementario -->
+              <select id="region" name="region" aria-describedby="error-region" required>
+                <option value="">-- Seleccione la región --</option>
+                <option value="13">Región Metropolitana de Santiago</option>
+                <option value="09">Región de La Araucanía</option>
+                <option value="16">Región de Ñuble</option>
+                <option value="07">Región del Maule</option>
+                <option value="05">Región de Valparaíso</option>
+              </select>
+              <p class="error" id="error-region" role="alert" hidden></p>
+            </div>
+
+            <div class="campo">
+              <label for="comuna">Comuna</label>
+              <!-- JS: al cambiar la región se vuelve a poblar este select -->
+              <select id="comuna" name="comuna" aria-describedby="error-comuna" required>
+                <option value="">-- Seleccione la comuna --</option>
+                <option value="13101">Santiago</option>
+                <option value="13123">Maipú</option>
+                <option value="07401">Linares</option>
+                <option value="07403">Longaví</option>
+                <option value="08101">Concepción</option>
+              </select>
+              <p class="error" id="error-comuna" role="alert" hidden></p>
+            </div>
+          </div>
+
+          <div class="campo">
+            <label for="direccion">Dirección</label>
+            <input type="text" id="direccion" name="direccion" maxlength="300"
+                   autocomplete="street-address" aria-describedby="ayuda-direccion error-direccion" required>
+            <small class="ayuda" id="ayuda-direccion">Calle, número y departamento. Máximo 300 caracteres.</small>
+            <p class="error" id="error-direccion" role="alert" hidden></p>
+          </div>
+
+          <div class="fila">
+            <div class="campo">
+              <label for="contrasena">Contraseña</label>
+              <input type="password" id="contrasena" name="contrasena" minlength="4" maxlength="10"
+                     autocomplete="new-password" aria-describedby="ayuda-contrasena error-contrasena" required>
+              <small class="ayuda" id="ayuda-contrasena">Entre 4 y 10 caracteres.</small>
+              <p class="error" id="error-contrasena" role="alert" hidden></p>
+            </div>
+
+            <div class="campo">
+              <label for="confirmar">Confirmar contraseña</label>
+              <input type="password" id="confirmar" name="confirmar" minlength="4" maxlength="10"
+                     autocomplete="new-password" aria-describedby="error-confirmar" required>
+              <p class="error" id="error-confirmar" role="alert" hidden></p>
+            </div>
+          </div>
+
+          <p>
+            <button type="submit" class="btn-principal">Registrar</button>
+            <a class="btn" href="usuarios.html">Cancelar</a>
+          </p>
+        </form>
+      </section>
+
+    </main>
+
+    <footer>
+      <p><small>Panel de administración · Mockup entrega 1 DSY1104</small></p>
+    </footer>
+
+  </div>
+</div>
+    <script src="../js/validaciones-admin.js"></script>
+</body>
+</html>

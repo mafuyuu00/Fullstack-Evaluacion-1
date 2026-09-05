@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Huerto Verde | Tienda online de frutas y verduras</title>
+  <meta name="description" content="Tienda online de frutas y verduras frescas. Mockup entrega 1 - DSY1104.">
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+  <!-- ============================================================
+       HEADER + MENÚ DE NAVEGACIÓN (se repite en todas las vistas
+       de la tienda). Incluye logo y carrito de compra.
+       ============================================================ -->
+  <header class="site-header">
+    <a class="brand" href="index.html">
+      <!-- IMAGEN: logo de la tienda, 40x40 px -> assets/img/logo.svg
+           <img src="assets/img/logo.svg" alt="Logo de Huerto Verde" width="40" height="40"> -->
+      <span class="logo-box" aria-hidden="true"></span>
+      <span>Huerto Verde</span>
+    </a>
+
+    <nav aria-label="Navegación principal">
+      <ul>
+        <li><a href="index.html" aria-current="page">Home</a></li>
+        <li><a href="productos.html">Productos</a></li>
+        <li><a href="nosotros.html">Nosotros</a></li>
+        <li><a href="blogs.html">Blogs</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+    </nav>
+
+    <a class="cart-link" href="carrito.html">
+      <!-- IMAGEN: icono de carrito de compra, 24x24 px -> assets/img/icono-carrito.svg -->
+      <span class="icono-carrito" aria-hidden="true"></span>
+      Cart (<span data-cart-count>0</span>)
+      <span class="oculto-visual">productos en el carrito</span>
+    </a>
+  </header>
+
+  <!-- Accesos de cuenta -->
+  <div class="barra-cuenta">
+    <a href="login.html">Iniciar sesión</a>
+    <span aria-hidden="true">|</span>
+    <a href="registro.html">Registrar usuario</a>
+  </div>
+
+  <main class="contenedor">
+
+    <!-- ============================================================
+         COMPONENTE PRINCIPAL (hero): información + imagen de la tienda
+         ============================================================ -->
+    <section class="hero" aria-labelledby="titulo-hero">
+      <div>
+        <h1 id="titulo-hero">TIENDA ONLINE</h1>
+        <p>
+          En Huerto Verde llevamos frutas y verduras frescas desde el campo
+          hasta tu casa. Selección diaria, precios directos del productor y
+          despacho en 24 horas dentro de la Región Metropolitana.
+        </p>
+        <p><a class="btn" href="productos.html">Ver productos</a></p>
+      </div>
+
+      <!-- IMAGEN: fotografía principal de la tienda, 640x400 px
+           -> assets/img/hero-tienda.jpg
+           <img src="assets/img/hero-tienda.jpg" alt="Cajones con frutas y verduras recién cosechadas" width="640" height="400"> -->
+      <div class="ph ph-alto">IMAGEN PRINCIPAL DE LA TIENDA (640x400)</div>
+    </section>
+
+    <!-- ============================================================
+         LISTA DE PRODUCTOS DESTACADOS
+         Cada tarjeta muestra imagen, nombre y precio.
+         En la entrega final este listado se genera con JavaScript
+         recorriendo el arreglo de productos.
+         ============================================================ -->
+    <section aria-labelledby="titulo-destacados">
+      <h2 id="titulo-destacados">Productos destacados</h2>
+
+      <!-- JS: recorrer el arreglo de productos e inyectar los <li> aquí -->
+      <ul class="grilla-productos" data-lista="destacados">
+
+        <li class="card-producto">
+          <a href="producto-detalle.html?codigo=FR-001">
+            <!-- IMAGEN: foto del producto, 300x200 px -> assets/img/manzana-fuji.jpg -->
+            <div class="ph">IMAGEN PRODUCTO (300x200)</div>
+            <h3>Manzana Fuji</h3>
+          </a>
+          <p>Kilo · Categoría: Frutas</p>
+          <p class="precio">$1.290</p>
+        </li>
+
+        <li class="card-producto">
+          <a href="producto-detalle.html?codigo=FR-002">
+            <!-- IMAGEN: foto del producto, 300x200 px -> assets/img/platano.jpg -->
+            <div class="ph">IMAGEN PRODUCTO (300x200)</div>
+            <h3>Plátano de Ecuador</h3>
+          </a>
+          <p>Kilo · Categoría: Frutas</p>
+          <p class="precio">$1.490</p>
+        </li>
+
+        <li class="card-producto">
+          <a href="producto-detalle.html?codigo=VE-001">
+            <!-- IMAGEN: foto del producto, 300x200 px -> assets/img/tomate.jpg -->
+            <div class="ph">IMAGEN PRODUCTO (300x200)</div>
+            <h3>Tomate Limachino</h3>
+          </a>
+          <p>Kilo · Categoría: Verduras</p>
+          <p class="precio">$1.990</p>
+        </li>
+
+        <li class="card-producto">
+          <a href="producto-detalle.html?codigo=VE-002">
+            <!-- IMAGEN: foto del producto, 300x200 px -> assets/img/palta.jpg -->
+            <div class="ph">IMAGEN PRODUCTO (300x200)</div>
+            <h3>Palta Hass</h3>
+          </a>
+          <p>Kilo · Categoría: Verduras</p>
+          <p class="precio">$4.990</p>
+        </li>
+
+        <li class="card-producto">
+          <a href="producto-detalle.html?codigo=FR-003">
+            <!-- IMAGEN: foto del producto, 300x200 px -> assets/img/naranja.jpg -->
+            <div class="ph">IMAGEN PRODUCTO (300x200)</div>
+            <h3>Naranja Valencia</h3>
+          </a>
+          <p>Malla 3 kilos · Categoría: Frutas</p>
+          <p class="precio">$3.590</p>
+        </li>
+
+        <li class="card-producto">
+          <a href="producto-detalle.html?codigo=OR-001">
+            <!-- IMAGEN: foto del producto, 300x200 px -> assets/img/mix-organico.jpg -->
+            <div class="ph">IMAGEN PRODUCTO (300x200)</div>
+            <h3>Mix orgánico de temporada</h3>
+          </a>
+          <p>Caja 5 kilos · Categoría: Orgánicos</p>
+          <p class="precio">$8.990</p>
+        </li>
+
+        <li class="card-producto">
+          <a href="producto-detalle.html?codigo=VE-003">
+            <!-- IMAGEN: foto del producto, 300x200 px -> assets/img/zanahoria.jpg -->
+            <div class="ph">IMAGEN PRODUCTO (300x200)</div>
+            <h3>Zanahoria</h3>
+          </a>
+          <p>Kilo · Categoría: Verduras</p>
+          <p class="precio">$990</p>
+        </li>
+
+        <li class="card-producto">
+          <a href="producto-detalle.html?codigo=FR-004">
+            <!-- IMAGEN: foto del producto, 300x200 px -> assets/img/frutilla.jpg -->
+            <div class="ph">IMAGEN PRODUCTO (300x200)</div>
+            <h3>Frutilla</h3>
+          </a>
+          <p>Bandeja 500 g · Categoría: Frutas</p>
+          <p class="precio">$2.490</p>
+        </li>
+
+      </ul>
+
+      <p class="centrado"><a class="btn" href="productos.html">Ver el catálogo completo</a></p>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       FOOTER (se repite en todas las vistas de la tienda)
+       ============================================================ -->
+  <footer class="site-footer">
+    <div>
+      <p><strong>Huerto Verde</strong></p>
+      <p>Av. Siempre Fresca 1234, Santiago de Chile<br>
+         +56 2 2345 6789 · contacto@huertoverde.cl</p>
+
+      <!-- IMAGEN: logos de medios de pago, 48x30 px cada uno
+           -> assets/img/pago-visa.svg, pago-mastercard.svg, pago-redcompra.svg -->
+      <ul class="medios-pago" aria-label="Medios de pago aceptados">
+        <li>VISA</li>
+        <li>MASTERCARD</li>
+        <li>REDCOMPRA</li>
+      </ul>
+    </div>
+
+    <nav aria-label="Categorías">
+      <h2>Categorías</h2>
+      <ul>
+        <li><a href="productos.html?categoria=frutas">Frutas</a></li>
+        <li><a href="productos.html?categoria=verduras">Verduras</a></li>
+        <li><a href="productos.html?categoria=organicos">Orgánicos</a></li>
+      </ul>
+    </nav>
+
+    <div>
+      <h2>Mantente en contacto</h2>
+      <p>Suscríbete y recibe las ofertas de la semana.</p>
+      <!-- JS: validar el correo antes de enviar (mismo criterio que el resto del sitio) -->
+      <form class="newsletter" action="#" method="post" novalidate>
+        <label class="oculto-visual" for="newsletter-correo">Correo electrónico</label>
+        <input type="email" id="newsletter-correo" name="correo"
+               placeholder="Ingresa tu correo" maxlength="100" autocomplete="email" required>
+        <button type="submit">Suscribirse</button>
+      </form>
+      <p><small>&copy; 2026 Huerto Verde · Mockup entrega 1 DSY1104</small></p>
+    </div>
+  </footer>
+
+  <!-- JS: js/carrito.js mantiene el contador [data-cart-count] leyendo localStorage -->
+</body>
+</html>
