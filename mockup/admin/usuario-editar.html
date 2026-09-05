@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editar usuario | Administrador Huerto Verde</title>
+  <link rel="stylesheet" href="../css/estilos.css">
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+
+<div class="layout-admin">
+
+  <nav class="menu-admin" aria-label="Menú del administrador">
+    <a class="brand" href="index.html">
+      <!-- IMAGEN: logo de la tienda, 32x32 px -> ../assets/img/logo.svg -->
+      <span class="logo-box" aria-hidden="true"></span>
+      <span>Huerto Verde</span>
+    </a>
+    <ul>
+      <li><a href="index.html">Dashboard</a></li>
+      <li><a href="productos.html">Productos</a></li>
+      <li><a href="usuarios.html" aria-current="page">Usuarios</a></li>
+    </ul>
+    <div class="menu-pie">
+      <ul>
+        <li><a href="../index.html">Ir a la tienda</a></li>
+        <li><a href="../login.html">Cerrar sesión</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="contenido-admin">
+
+    <header class="encabezado-admin">
+      <h1>Editar usuario</h1>
+      <div class="acciones-admin">
+        <a class="btn" href="usuario-ver.html?run=19011022K">Ver ficha</a>
+        <a class="btn" href="usuarios.html">Volver al listado</a>
+      </div>
+    </header>
+
+    <main>
+
+      <!-- ============================================================
+           FORMULARIO EDITAR USUARIO
+           Mismas reglas de validación que "Nuevo usuario".
+           JS: cargar los datos del usuario indicado en ?run= y
+           precargar cada campo. El Run no se puede modificar porque es
+           la clave del registro.
+           La contraseña sólo se actualiza si se completa el campo.
+           ============================================================ -->
+      <section class="caja-form" style="max-width:720px;margin-left:0;">
+        <h2>Datos de Camila Rojas Fuentes</h2>
+
+        <form action="#" method="post" novalidate autocomplete="on">
+
+          <div class="campo">
+            <label for="run">Run</label>
+            <input type="text" id="run" name="run" value="19011022K" minlength="7" maxlength="9"
+                   readonly aria-describedby="ayuda-run">
+            <small class="ayuda" id="ayuda-run">El Run no se puede modificar, es la clave del registro.</small>
+          </div>
+
+          <div class="fila">
+            <div class="campo">
+              <label for="nombre">Nombre</label>
+              <input type="text" id="nombre" name="nombre" maxlength="50" value="Camila"
+                     autocomplete="given-name" aria-describedby="error-nombre" required>
+              <p class="error" id="error-nombre" role="alert" hidden></p>
+            </div>
+
+            <div class="campo">
+              <label for="apellidos">Apellidos</label>
+              <input type="text" id="apellidos" name="apellidos" maxlength="100" value="Rojas Fuentes"
+                     autocomplete="family-name" aria-describedby="error-apellidos" required>
+              <p class="error" id="error-apellidos" role="alert" hidden></p>
+            </div>
+          </div>
+
+          <div class="campo">
+            <label for="correo">Correo</label>
+            <input type="email" id="correo" name="correo" maxlength="100" value="camila.rojas@duoc.cl"
+                   autocomplete="email" aria-describedby="ayuda-correo error-correo" required>
+            <small class="ayuda" id="ayuda-correo">Sólo dominios @duoc.cl, @profesor.duoc.cl y @gmail.com</small>
+            <p class="error" id="error-correo" role="alert" hidden></p>
+          </div>
+
+          <div class="fila">
+            <div class="campo">
+              <label for="fecha-nacimiento">Fecha de nacimiento (opcional)</label>
+              <input type="date" id="fecha-nacimiento" name="fecha-nacimiento" value="1996-04-18"
+                     autocomplete="bday">
+              <p class="error" id="error-fecha-nacimiento" role="alert" hidden></p>
+            </div>
+
+            <div class="campo">
+              <label for="tipo-usuario">Tipo de usuario</label>
+              <select id="tipo-usuario" name="tipo-usuario" aria-describedby="error-tipo-usuario" required>
+                <option value="">-- Seleccione el perfil --</option>
+                <option value="administrador" selected>Administrador</option>
+                <option value="vendedor">Vendedor</option>
+                <option value="cliente">Cliente</option>
+              </select>
+              <p class="error" id="error-tipo-usuario" role="alert" hidden></p>
+            </div>
+          </div>
+
+          <div class="fila">
+            <div class="campo">
+              <label for="region">Región</label>
+              <select id="region" name="region" aria-describedby="error-region" required>
+                <option value="">-- Seleccione la región --</option>
+                <option value="13" selected>Región Metropolitana de Santiago</option>
+                <option value="09">Región de La Araucanía</option>
+                <option value="16">Región de Ñuble</option>
+                <option value="07">Región del Maule</option>
+                <option value="05">Región de Valparaíso</option>
+              </select>
+              <p class="error" id="error-region" role="alert" hidden></p>
+            </div>
+
+            <div class="campo">
+              <label for="comuna">Comuna</label>
+              <!-- JS: al cambiar la región se vuelve a poblar este select -->
+              <select id="comuna" name="comuna" aria-describedby="error-comuna" required>
+                <option value="">-- Seleccione la comuna --</option>
+                <option value="13101" selected>Santiago</option>
+                <option value="13123">Maipú</option>
+              </select>
+              <p class="error" id="error-comuna" role="alert" hidden></p>
+            </div>
+          </div>
+
+          <div class="campo">
+            <label for="direccion">Dirección</label>
+            <input type="text" id="direccion" name="direccion" maxlength="300"
+                   value="Moneda 970, oficina 415" autocomplete="street-address"
+                   aria-describedby="error-direccion" required>
+            <p class="error" id="error-direccion" role="alert" hidden></p>
+          </div>
+
+          <fieldset>
+            <legend>Cambiar contraseña (opcional)</legend>
+            <div class="fila">
+              <div class="campo">
+                <label for="contrasena">Nueva contraseña</label>
+                <input type="password" id="contrasena" name="contrasena" minlength="4" maxlength="10"
+                       autocomplete="new-password" aria-describedby="ayuda-contrasena error-contrasena">
+                <small class="ayuda" id="ayuda-contrasena">Entre 4 y 10 caracteres. Deja el campo vacío para no cambiarla.</small>
+                <p class="error" id="error-contrasena" role="alert" hidden></p>
+              </div>
+
+              <div class="campo">
+                <label for="confirmar">Confirmar nueva contraseña</label>
+                <input type="password" id="confirmar" name="confirmar" minlength="4" maxlength="10"
+                       autocomplete="new-password" aria-describedby="error-confirmar">
+                <p class="error" id="error-confirmar" role="alert" hidden></p>
+              </div>
+            </div>
+          </fieldset>
+
+          <p>
+            <button type="submit" class="btn-principal">Guardar cambios</button>
+            <a class="btn" href="usuarios.html">Cancelar</a>
+            <!-- JS: confirmar antes de eliminar definitivamente -->
+            <button type="button" data-accion="eliminar" data-run="19011022K">Eliminar usuario</button>
+          </p>
+        </form>
+      </section>
+
+    </main>
+
+    <footer>
+      <p><small>Panel de administración · Mockup entrega 1 DSY1104</small></p>
+    </footer>
+
+  </div>
+</div>
+
+</body>
+</html>

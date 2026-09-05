@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Usuarios | Administrador Huerto Verde</title>
+  <link rel="stylesheet" href="../css/estilos.css">
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+
+<!-- ================================================================
+     MANTENEDOR DE USUARIOS - LISTADO
+     Acceso: sólo perfil Administrador.
+     ================================================================ -->
+<div class="layout-admin">
+
+  <nav class="menu-admin" aria-label="Menú del administrador">
+    <a class="brand" href="index.html">
+      <!-- IMAGEN: logo de la tienda, 32x32 px -> ../assets/img/logo.svg -->
+      <span class="logo-box" aria-hidden="true"></span>
+      <span>Huerto Verde</span>
+    </a>
+    <ul>
+      <li><a href="index.html">Dashboard</a></li>
+      <li><a href="productos.html">Productos</a></li>
+      <li><a href="usuarios.html" aria-current="page">Usuarios</a></li>
+    </ul>
+    <div class="menu-pie">
+      <ul>
+        <li><a href="../index.html">Ir a la tienda</a></li>
+        <li><a href="../login.html">Cerrar sesión</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="contenido-admin">
+
+    <header class="encabezado-admin">
+      <h1>Usuarios</h1>
+      <div class="acciones-admin">
+        <a class="btn btn-principal" href="usuario-nuevo.html">Nuevo usuario</a>
+      </div>
+    </header>
+
+    <main>
+
+      <!-- Filtros del listado. JS: filtra el arreglo de usuarios en vivo -->
+      <form class="filtros" action="#" method="get">
+        <div class="campo">
+          <label for="buscar">Buscar</label>
+          <input type="search" id="buscar" name="buscar" placeholder="Run, nombre o correo" maxlength="100">
+        </div>
+        <div class="campo">
+          <label for="perfil">Tipo de usuario</label>
+          <select id="perfil" name="perfil">
+            <option value="">Todos</option>
+            <option value="administrador">Administrador</option>
+            <option value="vendedor">Vendedor</option>
+            <option value="cliente">Cliente</option>
+          </select>
+        </div>
+        <div class="campo">
+          <label for="region">Región</label>
+          <select id="region" name="region">
+            <option value="">Todas</option>
+            <option value="13">Región Metropolitana de Santiago</option>
+            <option value="09">Región de La Araucanía</option>
+            <option value="16">Región de Ñuble</option>
+            <option value="07">Región del Maule</option>
+            <option value="05">Región de Valparaíso</option>
+          </select>
+        </div>
+        <button type="submit">Filtrar</button>
+      </form>
+
+      <!-- ============================================================
+           TABLA DE USUARIOS
+           JS: las filas se generan recorriendo el arreglo de usuarios.
+           ============================================================ -->
+      <table>
+        <caption>Listado de usuarios (10 de 48 registros)</caption>
+        <thead>
+          <tr>
+            <th scope="col">Run</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellidos</th>
+            <th scope="col">Correo</th>
+            <th scope="col">Tipo de usuario</th>
+            <th scope="col">Región</th>
+            <th scope="col">Acciones</th>
+          </tr>
+        </thead>
+        <tbody data-lista="usuarios-admin">
+          <tr>
+            <th scope="row">19011022K</th>
+            <td>Camila</td>
+            <td>Rojas Fuentes</td>
+            <td>camila.rojas@duoc.cl</td>
+            <td>Administrador</td>
+            <td>Metropolitana</td>
+            <td>
+              <a href="usuario-ver.html?run=19011022K">Ver</a> ·
+              <a href="usuario-editar.html?run=19011022K">Editar</a> ·
+              <!-- JS: pedir confirmación antes de eliminar -->
+              <button type="button" data-accion="eliminar" data-run="19011022K">Eliminar</button>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">152348769</th>
+            <td>Diego</td>
+            <td>Pérez Soto</td>
+            <td>diego.perez@profesor.duoc.cl</td>
+            <td>Vendedor</td>
+            <td>Metropolitana</td>
+            <td>
+              <a href="usuario-ver.html?run=152348769">Ver</a> ·
+              <a href="usuario-editar.html?run=152348769">Editar</a> ·
+              <button type="button" data-accion="eliminar" data-run="152348769">Eliminar</button>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">20887431</th>
+            <td>Valentina</td>
+            <td>Muñoz Araya</td>
+            <td>vale.munoz@gmail.com</td>
+            <td>Cliente</td>
+            <td>Valparaíso</td>
+            <td>
+              <a href="usuario-ver.html?run=20887431">Ver</a> ·
+              <a href="usuario-editar.html?run=20887431">Editar</a> ·
+              <button type="button" data-accion="eliminar" data-run="20887431">Eliminar</button>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">17654329</th>
+            <td>Matías</td>
+            <td>González Lillo</td>
+            <td>matias.gonzalez@duoc.cl</td>
+            <td>Cliente</td>
+            <td>Metropolitana</td>
+            <td>
+              <a href="usuario-ver.html?run=17654329">Ver</a> ·
+              <a href="usuario-editar.html?run=17654329">Editar</a> ·
+              <button type="button" data-accion="eliminar" data-run="17654329">Eliminar</button>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">21334556</th>
+            <td>Antonia</td>
+            <td>Silva Bravo</td>
+            <td>antonia.silva@gmail.com</td>
+            <td>Cliente</td>
+            <td>La Araucanía</td>
+            <td>
+              <a href="usuario-ver.html?run=21334556">Ver</a> ·
+              <a href="usuario-editar.html?run=21334556">Editar</a> ·
+              <button type="button" data-accion="eliminar" data-run="21334556">Eliminar</button>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">16998772</th>
+            <td>Ignacio</td>
+            <td>Cortés Vera</td>
+            <td>ignacio.cortes@duoc.cl</td>
+            <td>Vendedor</td>
+            <td>Ñuble</td>
+            <td>
+              <a href="usuario-ver.html?run=16998772">Ver</a> ·
+              <a href="usuario-editar.html?run=16998772">Editar</a> ·
+              <button type="button" data-accion="eliminar" data-run="16998772">Eliminar</button>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">18445120</th>
+            <td>Fernanda</td>
+            <td>Torres Riquelme</td>
+            <td>fernanda.torres@gmail.com</td>
+            <td>Cliente</td>
+            <td>Maule</td>
+            <td>
+              <a href="usuario-ver.html?run=18445120">Ver</a> ·
+              <a href="usuario-editar.html?run=18445120">Editar</a> ·
+              <button type="button" data-accion="eliminar" data-run="18445120">Eliminar</button>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">14229803</th>
+            <td>Rodrigo</td>
+            <td>Herrera Pinto</td>
+            <td>rodrigo.herrera@profesor.duoc.cl</td>
+            <td>Administrador</td>
+            <td>Metropolitana</td>
+            <td>
+              <a href="usuario-ver.html?run=14229803">Ver</a> ·
+              <a href="usuario-editar.html?run=14229803">Editar</a> ·
+              <button type="button" data-accion="eliminar" data-run="14229803">Eliminar</button>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">22110987</th>
+            <td>Josefa</td>
+            <td>Navarro Díaz</td>
+            <td>josefa.navarro@gmail.com</td>
+            <td>Cliente</td>
+            <td>Valparaíso</td>
+            <td>
+              <a href="usuario-ver.html?run=22110987">Ver</a> ·
+              <a href="usuario-editar.html?run=22110987">Editar</a> ·
+              <button type="button" data-accion="eliminar" data-run="22110987">Eliminar</button>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">19776554</th>
+            <td>Tomás</td>
+            <td>Espinoza Reyes</td>
+            <td>tomas.espinoza@duoc.cl</td>
+            <td>Cliente</td>
+            <td>Metropolitana</td>
+            <td>
+              <a href="usuario-ver.html?run=19776554">Ver</a> ·
+              <a href="usuario-editar.html?run=19776554">Editar</a> ·
+              <button type="button" data-accion="eliminar" data-run="19776554">Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Paginación del listado -->
+      <nav class="paginacion" aria-label="Paginación del listado de usuarios">
+        <ul>
+          <li><a href="#" aria-label="Página anterior">&laquo;</a></li>
+          <li><span aria-current="page">1</span></li>
+          <li><a href="#">2</a></li>
+          <li><a href="#">3</a></li>
+          <li><a href="#">4</a></li>
+          <li><a href="#">5</a></li>
+          <li><a href="#" aria-label="Página siguiente">&raquo;</a></li>
+        </ul>
+      </nav>
+
+    </main>
+
+    <footer>
+      <p><small>Panel de administración · Mockup entrega 1 DSY1104</small></p>
+    </footer>
+
+  </div>
+</div>
+
+</body>
+</html>

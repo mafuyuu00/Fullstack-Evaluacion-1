@@ -1,0 +1,229 @@
+/* ============================================================
+   Huerto Verde - Hoja de estilos de la TIENDA (mockup entrega 1)
+   Estilos deliberadamente mínimos: el foco de este mockup es la
+   estructura semántica del HTML. Aquí sólo se resuelve el layout
+   para que las vistas se puedan leer y navegar.
+   ============================================================ */
+
+:root {
+  --borde: 1px solid #999;
+  --gris: #eee;
+  --gris-oscuro: #ccc;
+  --azul: #1a56db;
+  --rojo: #b00020;
+  --verde: #0a7d32;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.45;
+  color: #222;
+}
+
+img { max-width: 100%; }
+a { color: var(--azul); }
+
+/* ---------- Contenedores genéricos ---------- */
+.contenedor {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+/* ---------- Header + navegación ---------- */
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 12px 24px;
+  background: var(--gris);
+  border-bottom: var(--borde);
+}
+
+.brand { display: flex; align-items: center; gap: 8px; font-weight: bold; text-decoration: none; color: #000; }
+.logo-box { display: inline-block; width: 28px; height: 28px; background: #333; }
+
+.site-header nav ul,
+.site-footer nav ul {
+  display: flex;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  flex-wrap: wrap;
+}
+.site-header nav a { text-decoration: underline; }
+
+.cart-link { display: flex; align-items: center; gap: 6px; }
+.icono-carrito { display: inline-block; width: 22px; height: 18px; border: var(--borde); }
+
+.barra-cuenta {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 6px 24px;
+  border-bottom: var(--borde);
+}
+
+/* ---------- Hero / componente principal ---------- */
+.hero {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  align-items: center;
+  background: var(--gris);
+  padding: 24px;
+}
+.hero > * { flex: 1 1 320px; }
+.hero h1 { margin-top: 0; letter-spacing: 1px; }
+
+/* ---------- Placeholders de imagen ----------
+   Todas las imágenes reales van comentadas en el HTML.
+   Esta caja marca el espacio que ocuparán.                     */
+.ph {
+  display: grid;
+  place-items: center;
+  min-height: 140px;
+  border: var(--borde);
+  background: repeating-linear-gradient(45deg, #fff, #fff 10px, #f4f4f4 10px, #f4f4f4 20px);
+  font-size: 12px;
+  color: #666;
+  text-align: center;
+  padding: 8px;
+}
+.ph-alto { min-height: 320px; }
+.ph-mini { min-height: 56px; }
+
+/* ---------- Grilla de productos ---------- */
+.grilla-productos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.card-producto { border: var(--borde); padding: 10px; background: #fafafa; }
+.card-producto h3 { font-size: 14px; margin: 8px 0 4px; }
+.card-producto .precio { font-weight: bold; }
+
+/* ---------- Layout con barra lateral ---------- */
+.con-sidebar { display: flex; gap: 24px; align-items: flex-start; flex-wrap: wrap; }
+.con-sidebar > main { flex: 1 1 520px; }
+.sidebar { flex: 0 0 220px; border: var(--borde); padding: 12px; background: #fafafa; }
+.sidebar h2 { font-size: 14px; text-transform: uppercase; }
+.sidebar ul { list-style: none; padding: 0; margin: 0; }
+
+/* ---------- Formularios ---------- */
+.caja-form {
+  max-width: 560px;
+  margin: 24px auto;
+  border: var(--borde);
+  background: var(--gris);
+  padding: 0 0 20px;
+}
+.caja-form > h1,
+.caja-form > h2 { margin: 0; padding: 10px 16px; background: var(--gris-oscuro); font-size: 15px; }
+.caja-form form { padding: 16px; }
+
+.campo { margin-bottom: 14px; }
+.campo label { display: block; font-size: 12px; text-transform: uppercase; margin-bottom: 4px; }
+.campo input,
+.campo select,
+.campo textarea { width: 100%; padding: 6px; border: var(--borde); background: #fff; font: inherit; }
+.campo .ayuda { display: block; font-size: 12px; color: #555; }
+
+/* Mensaje de error que se muestra/oculta desde JavaScript */
+.error { color: var(--rojo); font-size: 12px; margin: 4px 0 0; }
+
+.fila { display: flex; gap: 12px; flex-wrap: wrap; }
+.fila > .campo { flex: 1 1 200px; }
+
+button,
+.btn {
+  display: inline-block;
+  padding: 8px 16px;
+  border: var(--borde);
+  background: #fff;
+  font: inherit;
+  cursor: pointer;
+  text-decoration: none;
+  color: #000;
+}
+.btn-principal { background: var(--azul); color: #fff; border-color: var(--azul); }
+.btn-pagar { background: var(--verde); color: #fff; border-color: var(--verde); width: 100%; }
+.btn-bloque { width: 100%; }
+
+/* ---------- Blogs ---------- */
+.articulo-blog {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  background: var(--gris);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+.articulo-blog > * { flex: 1 1 300px; }
+
+/* ---------- Detalle de producto ---------- */
+.detalle-producto { display: flex; gap: 24px; flex-wrap: wrap; }
+.detalle-producto .galeria { flex: 1 1 420px; }
+.detalle-producto .compra { flex: 1 1 300px; }
+.miniaturas { display: flex; gap: 8px; list-style: none; padding: 0; margin: 8px 0 0; }
+.miniaturas li { flex: 0 0 70px; }
+.breadcrumb ul { display: flex; gap: 6px; list-style: none; padding: 0; font-size: 12px; }
+
+/* ---------- Carrito ---------- */
+.layout-carrito { display: flex; gap: 24px; flex-wrap: wrap; align-items: flex-start; }
+.layout-carrito .lineas { flex: 1 1 520px; }
+.layout-carrito .resumen { flex: 0 0 280px; border: var(--borde); padding: 16px; }
+.linea-carrito { display: flex; gap: 16px; align-items: center; border-bottom: var(--borde); padding: 12px 0; }
+.linea-carrito .miniatura { flex: 0 0 110px; }
+.linea-carrito .datos { flex: 1 1 auto; }
+.cantidad { display: flex; align-items: center; gap: 6px; }
+.cantidad input { width: 48px; text-align: center; padding: 4px; border: var(--borde); }
+
+/* ---------- Tablas ---------- */
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+caption { text-align: left; font-weight: bold; padding-bottom: 8px; }
+th, td { border: var(--borde); padding: 6px 8px; text-align: left; }
+thead th { background: var(--gris); }
+
+/* ---------- Footer ---------- */
+.site-footer {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  border-top: var(--borde);
+  background: var(--gris);
+  padding: 20px 24px;
+  margin-top: 32px;
+  font-size: 13px;
+}
+.medios-pago { display: flex; gap: 8px; list-style: none; padding: 0; margin: 8px 0 0; }
+.medios-pago li { border: var(--borde); padding: 2px 6px; font-size: 11px; background: #fff; }
+.newsletter { display: flex; gap: 6px; flex-wrap: wrap; }
+.newsletter input { padding: 6px; border: var(--borde); }
+
+/* ---------- Utilidades ---------- */
+.centrado { text-align: center; }
+.oculto-visual {
+  position: absolute;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ---------- Responsivo mínimo ---------- */
+@media (max-width: 700px) {
+  .site-header { flex-direction: column; align-items: flex-start; }
+  .grilla-productos { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+}

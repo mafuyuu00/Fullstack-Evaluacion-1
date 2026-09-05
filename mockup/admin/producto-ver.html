@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ficha del producto | Administrador Huerto Verde</title>
+  <link rel="stylesheet" href="../css/estilos.css">
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+
+<!-- ================================================================
+     MOSTRAR PRODUCTO (sólo lectura)
+     Es la única vista de productos a la que también accede el perfil
+     Vendedor, junto con el listado.
+     ================================================================ -->
+<div class="layout-admin">
+
+  <nav class="menu-admin" aria-label="Menú del administrador">
+    <a class="brand" href="index.html">
+      <!-- IMAGEN: logo de la tienda, 32x32 px -> ../assets/img/logo.svg -->
+      <span class="logo-box" aria-hidden="true"></span>
+      <span>Huerto Verde</span>
+    </a>
+    <ul>
+      <li><a href="index.html">Dashboard</a></li>
+      <li><a href="productos.html" aria-current="page">Productos</a></li>
+      <li data-rol="administrador"><a href="usuarios.html">Usuarios</a></li>
+    </ul>
+    <div class="menu-pie">
+      <ul>
+        <li><a href="../index.html">Ir a la tienda</a></li>
+        <li><a href="../login.html">Cerrar sesión</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="contenido-admin">
+
+    <header class="encabezado-admin">
+      <h1>Palta Hass</h1>
+      <div class="acciones-admin">
+        <!-- Editar y eliminar sólo para el perfil Administrador -->
+        <a class="btn btn-principal" href="producto-editar.html?codigo=VE-002" data-rol="administrador">Editar</a>
+        <a class="btn" href="productos.html">Volver al listado</a>
+      </div>
+    </header>
+
+    <main>
+
+      <nav class="breadcrumb" aria-label="Ruta de navegación">
+        <ul>
+          <li><a href="index.html">Dashboard</a></li>
+          <li aria-hidden="true">&gt;</li>
+          <li><a href="productos.html">Productos</a></li>
+          <li aria-hidden="true">&gt;</li>
+          <li><span aria-current="page">VE-002</span></li>
+        </ul>
+      </nav>
+
+      <section aria-labelledby="titulo-ficha">
+        <h2 id="titulo-ficha">Ficha del producto</h2>
+
+        <dl class="ficha">
+          <dt>Código producto</dt>
+          <dd>VE-002</dd>
+
+          <dt>Nombre</dt>
+          <dd>Palta Hass</dd>
+
+          <dt>Categoría</dt>
+          <dd>Verduras</dd>
+
+          <dt>Precio</dt>
+          <dd>$4.990</dd>
+
+          <dt>Stock</dt>
+          <dd class="alerta-stock">4 unidades (bajo el stock crítico)</dd>
+
+          <dt>Stock crítico</dt>
+          <dd>10 unidades</dd>
+
+          <dt>Estado</dt>
+          <dd>Publicado en la tienda</dd>
+
+          <dt>Descripción</dt>
+          <dd>
+            Palta Hass de calibre mediano, cosechada en Quillota. Cremosa, ideal
+            para untar. Se despacha con punto de maduración de 2 a 3 días.
+          </dd>
+
+          <dt>Imagen</dt>
+          <dd>
+            <!-- IMAGEN: foto del producto, 400x300 px -> ../assets/img/palta.jpg
+                 <img src="../assets/img/palta.jpg" alt="Paltas Hass cortadas por la mitad" width="400" height="300"> -->
+            <div class="ph" style="max-width:400px;">IMAGEN DEL PRODUCTO (400x300)</div>
+          </dd>
+
+          <dt>Última modificación</dt>
+          <dd><time datetime="2026-09-02T10:35">2 de septiembre de 2026, 10:35</time> por admin@duoc.cl</dd>
+        </dl>
+      </section>
+
+      <section aria-labelledby="titulo-vista-tienda">
+        <h2 id="titulo-vista-tienda">Vista pública</h2>
+        <p>
+          Así ve el cliente este producto:
+          <a href="../producto-detalle.html?codigo=VE-002">abrir el detalle en la tienda</a>.
+        </p>
+      </section>
+
+    </main>
+
+    <footer>
+      <p><small>Panel de administración · Mockup entrega 1 DSY1104</small></p>
+    </footer>
+
+  </div>
+</div>
+
+</body>
+</html>
