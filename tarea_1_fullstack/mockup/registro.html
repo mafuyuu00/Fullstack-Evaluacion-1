@@ -56,7 +56,7 @@
 
       <!-- novalidate: la validación la controla JavaScript para poder
            mostrar mensajes de error personalizados -->
-      <form action="#" method="post" novalidate autocomplete="on">
+      <form id="formulario" action="#" method="post" novalidate autocomplete="on">
 
         <div class="campo">
           <label for="run">Run</label>
@@ -127,11 +127,6 @@
                  entregado como material complementario -->
             <select id="region" name="region" aria-describedby="error-region" required>
               <option value="">-- Seleccione la región --</option>
-              <option value="13">Región Metropolitana de Santiago</option>
-              <option value="09">Región de La Araucanía</option>
-              <option value="16">Región de Ñuble</option>
-              <option value="07">Región del Maule</option>
-              <option value="05">Región de Valparaíso</option>
             </select>
             <p class="error" id="error-region" role="alert" hidden></p>
           </div>
@@ -142,11 +137,6 @@
                  con las comunas que corresponden -->
             <select id="comuna" name="comuna" aria-describedby="error-comuna" required>
               <option value="">-- Seleccione la comuna --</option>
-              <option value="13101">Santiago</option>
-              <option value="13123">Maipú</option>
-              <option value="07401">Linares</option>
-              <option value="07403">Longaví</option>
-              <option value="08101">Concepción</option>
             </select>
             <p class="error" id="error-comuna" role="alert" hidden></p>
           </div>
@@ -160,7 +150,7 @@
         </div>
 
         <p class="centrado">
-          <button type="submit" class="btn-principal">Registrar</button>
+          <button type="submit" class="btn-principal" id="boton_registrar">Registrar</button>
         </p>
 
         <p class="centrado">¿Ya tienes cuenta? <a href="login.html">Inicia sesión</a></p>
@@ -199,5 +189,7 @@
     </div>
   </footer>
 
+
+  <script type="module" src="js/validaciones-registro.js"></script>
 </body>
 </html>

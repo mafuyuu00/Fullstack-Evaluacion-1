@@ -160,6 +160,12 @@ button,
 .btn-pagar { background: var(--verde); color: #fff; border-color: var(--verde); width: 100%; }
 .btn-bloque { width: 100%; }
 
+button:disabled,
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
 /* ---------- Blogs ---------- */
 .articulo-blog {
   display: flex;
