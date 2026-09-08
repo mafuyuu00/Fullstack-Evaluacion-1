@@ -126,10 +126,11 @@ function correoValido(valor) {
 function validarCorreo() {
     inputCorreo.addEventListener("input", () => {
         const valor = inputCorreo.value.trim();
+        // Cambio solicitado: mensaje exacto para dominios no permitidos.
         const mensaje = !valor
             ? "El correo es obligatorio."
             : !correoValido(valor)
-                ? "Use un correo @duoc.cl, @profesor.duoc.cl o @gmail.com."
+                ? "The only allowed domains are: @duoc.cl, @profesor.duoc.cl, @gmail.com."
                 : "";
 
         mostrarError(inputCorreo, mensaje);

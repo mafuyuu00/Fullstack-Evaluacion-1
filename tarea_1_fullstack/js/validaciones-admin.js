@@ -1,6 +1,6 @@
 import { comunasPorRegion } from "./regiones.js";
 
-// I left these validations reusable across the four admin forms.
+// Dejé estas validaciones reutilizables para los cuatro formularios de administración.
 
 /* ---------- Campos del mantenedor de productos ---------- */
 const inputCodigo = document.getElementById("codigo");
@@ -26,7 +26,7 @@ const inputConfirmar = document.getElementById("confirmar");
 const dominiosValidos = ["@duoc.cl", "@profesor.duoc.cl", "@gmail.com"];
 
 
-// I left this helper to show validation messages beside each field.
+// Dejé este ayudante para mostrar mensajes de validación junto a cada campo.
 function mostrarError(inputTarget, mensaje) {
     const idError = `error-${inputTarget.id}`;
     const pError = document.getElementById(idError);
@@ -42,7 +42,7 @@ function mostrarError(inputTarget, mensaje) {
 }
 
 
-// I left this helper to populate regions and their matching communes.
+// Dejé este ayudante para cargar las regiones y sus comunas correspondientes.
 function escribirRegiones() {
     for (const nombreRegion in comunasPorRegion) {
         const option = document.createElement("option");
@@ -98,9 +98,9 @@ function cargarRegionesYComunas() {
 }
 
 
-// I left this section to validate user-maintenance fields.
+// Dejé esta sección para validar los campos de mantenimiento de usuarios.
 
-// I left this calculation to verify the RUN check digit.
+// Dejé este cálculo para comprobar el dígito verificador del RUN.
 function calcularDigitoVerificador(cuerpo) {
     let suma = 0;
     let multiplo = 2;
@@ -118,7 +118,7 @@ function calcularDigitoVerificador(cuerpo) {
 }
 
 function validarRun() {
-    // I left the RUN unchanged when editing an existing user.
+    // Dejé el RUN sin cambios al editar un usuario existente.
     if (!inputRun || inputRun.readOnly) return;
 
     inputRun.addEventListener("input", () => {
@@ -272,7 +272,7 @@ function validarContrasena() {
 }
 
 
-// I left this section to validate product fields.
+// Dejé esta sección para validar los campos de productos.
 
 function validarCodigo() {
     if (!inputCodigo) return;
@@ -294,7 +294,7 @@ function validarCodigo() {
 }
 
 function validarNombreProducto() {
-    // I left this check only for product forms.
+    // Dejé esta comprobación solo para los formularios de productos.
     if (!inputCodigo || !inputNombreProducto) return;
 
     inputNombreProducto.addEventListener("input", () => {
@@ -359,7 +359,7 @@ function validarPrecio() {
         mostrarError(inputPrecio, mensajeError);
         inputPrecio.setCustomValidity(mensajeError);
 
-        /* Un precio 0 es válido: se considera producto FREE */
+        /* Un precio 0 es válido: se considera producto GRATIS */
         if (mensajeError === "" && numero === 0) {
             mostrarError(inputPrecio, "");
         }
@@ -390,7 +390,7 @@ function validarStock() {
     });
 }
 
-// I left low stock as a warning instead of a blocking error.
+// Dejé el stock bajo como advertencia en lugar de un error que bloquee.
 function revisarStockCritico() {
     if (!inputStock || !inputStockCritico) return;
 
@@ -438,7 +438,7 @@ function validarCategoria() {
 }
 
 
-// I left each validator safe to run on any admin form.
+// Dejé cada validador preparado para ejecutarse en cualquier formulario de administración.
 cargarRegionesYComunas();
 
 validarRun();

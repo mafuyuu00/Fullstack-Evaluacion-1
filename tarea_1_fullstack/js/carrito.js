@@ -1,11 +1,11 @@
 const CLAVE_CARRITO = "carrito";
 const DESPACHO = 2990;
 
-/* ---------- Lectura, limpieza y persistencia ---------- */
+// ----------------------- Lectura, limpieza y persistencia
 
 function cantidadValida(producto, cantidad) {
     return Number.isInteger(cantidad) && cantidad > 0 && cantidad <= producto.stock;
-}
+}  // fin -> revisar q los productos sean ints
 
 function normalizarCarrito(valor) {
     if (!Array.isArray(valor)) return [];
@@ -25,7 +25,7 @@ function normalizarCarrito(valor) {
 
         return carrito;
     }, []);
-}
+}  // fin -> hace q todo sea listas, y verifica q estén bien; ej "hola" lo pasa a [], que es una lista
 
 function leerCarrito() {
     const guardado = localStorage.getItem(CLAVE_CARRITO);
@@ -36,13 +36,17 @@ function leerCarrito() {
     } catch (error) {
         return [];
     }
-}
+} // fin -> lee el carrito de la memoria local
 
 function guardarCarrito(carrito) {
     localStorage.setItem(CLAVE_CARRITO, JSON.stringify(normalizarCarrito(carrito)));
-}
+} // fin -> toma la memoria local de carrito y lo pasa  a JSON antes de guardarlo
 
-/* ---------- Contador y resumen ---------- */
+
+
+
+
+// ------------- counter y resumen del carrito
 
 function contarProductos(carrito) {
     return carrito.reduce((total, linea) => total + linea.cantidad, 0);
@@ -72,29 +76,33 @@ function actualizarResumen(carrito) {
     if (campoSubtotal) campoSubtotal.textContent = formatoPesos(subtotal);
     if (campoDespacho) campoDespacho.textContent = formatoPesos(despacho);
     if (campoTotal) campoTotal.textContent = formatoPesos(subtotal + despacho);
-}
+} // saca valores a un scope de fx usando las fx previas para actualizar el carrito con el textContent q actualiza el html
 
-function anunciar(mensaje, destino = null) {
-    const elemento = destino || document.getElementById("mensaje-carrito");
-    if (elemento) {
-        elemento.textContent = mensaje;
-        elemento.hidden = false;
-        return;
+function anunciar(mensaje) {
+    let aviso = document.getElementById("mensaje-carrito");
+
+    if (!aviso) {
+        aviso = document.createElement("p");
+        aviso.id = "mensaje-carrito";
+        aviso.className = "error";
+        aviso.setAttribute("role", "status");
+        document.body.prepend(aviso);
     }
 
-    const aviso = document.createElement("p");
-    aviso.id = "mensaje-carrito";
-    aviso.className = "error";
-    aviso.setAttribute("role", "status");
     aviso.textContent = mensaje;
-    document.body.prepend(aviso);
-}
+    aviso.hidden = false;
+} // crea un banner arriba para mostrar mensajes del carrito; limitado sólo a poner más del stock posible
 
-/* ---------- Vista del carrito ---------- */
+
+
+
+
+
+//-------------------------------- Vista del carrito
 
 function buscarLinea(carrito, codigo) {
     return carrito.find(linea => linea.codigo === codigo) || null;
-}
+} // busca y si no pilla, devuelve nada, si no, devuelve lo q encuentre
 
 function crearArticuloCarrito(producto, cantidadInicial) {
     const articulo = document.createElement("article");
@@ -169,7 +177,7 @@ function crearArticuloCarrito(producto, cantidadInicial) {
 
     articulo.append(miniatura, datos, precio, cantidad, eliminar);
     return articulo;
-}
+} // construye el artículo (el producto del carrito) tomando mil recursos
 
 function actualizarVistaCarrito(carrito) {
     const contenedor = document.querySelector(".lineas");
@@ -233,43 +241,47 @@ function actualizarVistaCarrito(carrito) {
     }
 
     actualizarResumen(carrito);
-}
+} // básicamente modifica el html para sacar y meter los artículos del carrito. 
+// Esta fx fue muy ayudada por IA, y no le encontramos errores en los tests.
 
 function guardarYActualizar(carrito) {
     const limpio = normalizarCarrito(carrito);
     guardarCarrito(limpio);
     actualizarContador(limpio);
     actualizarVistaCarrito(limpio);
-}
+} // esta en resumen refresca el carrito
 
-/* ---------- Añadir productos y límite de stock ---------- */
 
-function agregarProducto(codigo, cantidad = 1, mensajeDestino = null) {
+
+
+// --------------------------- añadir productos
+
+function agregarProducto(codigo, cantidad = 1) {
     const producto = buscarProducto(codigo);
     const cantidadSolicitada = Number.parseInt(cantidad, 10);
 
     if (!producto || !Number.isInteger(cantidadSolicitada) || cantidadSolicitada < 1) {
-        anunciar("No se pudo agregar el producto seleccionado.", mensajeDestino);
+        anunciar("No se pudo agregar el producto seleccionado.");
         return false;
-    }
+    } // si no existe, o el número no es viable (no entero o negativo) rechaza
 
     const carrito = leerCarrito();
     const lineaExistente = buscarLinea(carrito, codigo);
     const cantidadActual = lineaExistente ? lineaExistente.cantidad : 0;
 
     if (cantidadActual + cantidadSolicitada > producto.stock) {
-        anunciar(`No hay más stock disponible de ${producto.nombre}. Máximo: ${producto.stock}.`, mensajeDestino);
+        anunciar(`No hay más stock disponible de ${producto.nombre}. Máximo: ${producto.stock}.`);
         return false;
-    }
+    } // error si pide más del stock actual
 
     if (lineaExistente) {
         lineaExistente.cantidad += cantidadSolicitada;
     } else {
         carrito.push({ codigo, cantidad: cantidadSolicitada });
-    }
+    } // si ya existe, añade y actualiza
 
     guardarYActualizar(carrito);
-    anunciar(`${producto.nombre} fue agregado al carrito.`, mensajeDestino);
+    anunciar(`${producto.nombre} fue agregado al carrito.`);
     return true;
 }
 
@@ -291,13 +303,14 @@ function activarBotonesAnadir() {
         event.preventDefault();
         const boton = formulario.querySelector('button[data-accion="añadir"]');
         const cantidad = document.getElementById("cantidad");
-        const mensaje = document.getElementById("mensaje-detalle");
 
-        if (boton) agregarProducto(boton.dataset.codigo, cantidad ? cantidad.value : 1, mensaje);
+        if (boton) agregarProducto(boton.dataset.codigo, cantidad ? cantidad.value : 1);
     });
-}
+} // hace que si le das click en añadir, sume en el detalle del carrito
 
-/* ---------- Sumar, restar, eliminar y editar cantidad ---------- */
+
+
+// -------------------- Cambios en el carrito
 
 function cambiarCantidad(codigo, cambio) {
     const producto = buscarProducto(codigo);
@@ -306,6 +319,7 @@ function cambiarCantidad(codigo, cambio) {
     if (!producto || !linea) return;
 
     const nuevaCantidad = linea.cantidad + cambio;
+    // si hay una nueva cantidad, lo suma (si le ponemos menos, suma un negativo así q resta (l374))
 
     if (nuevaCantidad > producto.stock) {
         anunciar(`No puedes superar el stock disponible de ${producto.stock} unidades.`);
@@ -319,11 +333,11 @@ function cambiarCantidad(codigo, cambio) {
 
     linea.cantidad = nuevaCantidad;
     guardarYActualizar(carrito);
-}
+} // ve las operaciones de cantidad de productos, y luego actualiza
 
 function eliminarProducto(codigo, carrito = leerCarrito()) {
     guardarYActualizar(carrito.filter(linea => linea.codigo !== codigo));
-}
+} // literalmente crea un carrito nuevo, pero filtra el .codigo; en práctica borra el id filtrado
 
 function actualizarCantidadDesdeInput(input) {
     const codigo = input.id.replace("cant-", "");
@@ -347,7 +361,7 @@ function actualizarCantidadDesdeInput(input) {
 
     linea.cantidad = cantidad;
     guardarYActualizar(carrito);
-}
+} // permite actualizar desde la cajita, ingresando un número de forma manual
 
 function activarControlesArticulo(articulo) {
     const codigo = articulo.dataset.codigo;
@@ -374,14 +388,15 @@ function activarControlesCarrito() {
     for (const articulo of document.querySelectorAll("article[data-codigo]")) {
         activarControlesArticulo(articulo);
     }
-}
+} // recorre todos los productos y vela q sus botones realmente botoneen
 
-/* ---------- Inicialización ---------- */
+
+// ------------------ Inicializa el carrito y activa todos los botones
 
 function iniciarCarritoDesdePagina() {
     if (localStorage.getItem(CLAVE_CARRITO) === null) return [];
     return leerCarrito();
-}
+} 
 
 const carritoActual = iniciarCarritoDesdePagina();
 activarBotonesAnadir();

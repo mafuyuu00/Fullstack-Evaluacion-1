@@ -26,17 +26,17 @@
     <a class="cart-link" href="carrito.html">
       <!-- IMAGEN: icono de carrito, 24x24 px -->
       <span class="icono-carrito" aria-hidden="true"></span>
-      Cart (<span data-cart-count>0</span>)
+      Carrito (<span data-cart-count>0</span>)
     </a>
   </header>
 
   <main class="contenedor">
 
-    <!-- I left this public form ready to validate new user registrations. -->
+    <!-- Dejé este formulario público listo para validar nuevos registros de usuarios. -->
     <section class="caja-form" aria-labelledby="titulo-registro">
       <h1 id="titulo-registro">Registro de usuario</h1>
 
-      <!-- I left JavaScript in control of this form's custom validation. -->
+      <!-- Dejé que JavaScript controle la validación personalizada de este formulario. -->
       <form action="#" method="post" novalidate autocomplete="on" id="formulario">
 
         <div class="campo">
@@ -104,7 +104,7 @@
         <div class="fila">
           <div class="campo">
             <label for="region">Región</label>
-            <!-- I left this select populated from the shared region data. -->
+            <!-- Dejé este selector cargado con los datos compartidos de regiones. -->
             <select id="region" name="region" aria-describedby="error-region" required>
               <option value="">-- Seleccione la región --</option>
             </select>
@@ -170,7 +170,7 @@
     </div>
   </footer>
 
-  <!-- I left this module script to load the shared region data before validation. -->
+  <!-- Dejé este script como módulo para cargar los datos compartidos de regiones antes de validar. -->
   <script type="module" src="../js/validaciones-registro.js"></script>
 </body>
 </html>
