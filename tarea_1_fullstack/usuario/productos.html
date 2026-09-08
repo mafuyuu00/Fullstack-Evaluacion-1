@@ -26,7 +26,7 @@
     <a class="cart-link" href="carrito.html">
       <!-- IMAGEN: icono de carrito, 24x24 px -->
       <span class="icono-carrito" aria-hidden="true"></span>
-      Cart (<span data-cart-count>0</span>)
+      Cart (<span id="contador-carrito" data-cart-count>0</span>)
     </a>
   </header>
 
@@ -38,9 +38,7 @@
 
   <div class="contenedor con-sidebar">
 
-    <!-- ============================================================
-         BARRA LATERAL de filtros (elemento de navegación secundario)
-         ============================================================ -->
+    <!-- I left this sidebar ready to filter the product list. -->
     <aside class="sidebar" aria-labelledby="titulo-filtros">
       <h2 id="titulo-filtros">Categorías</h2>
       <ul>
@@ -67,17 +65,12 @@
       <h1>Productos</h1>
       <p>Catálogo completo de la tienda. Haz clic en un producto para ver su detalle.</p>
 
-      <!-- ============================================================
-           LISTADO DE PRODUCTOS
-           JS: se genera recorriendo el arreglo de productos.
-           Cada tarjeta tiene imagen, nombre, precio y botón "Añadir".
-           ============================================================ -->
+      <!-- I left this list ready to render products from the shared data. -->
       <ul class="grilla-productos" data-lista="productos">
 
         <li class="card-producto">
           <a href="producto-detalle.html?codigo=FR-001">
-            <!-- IMAGEN: foto del producto, 300x200 px -> assets/img/manzana-fuji.jpg -->
-            <div class="ph">IMAGEN PRODUCTO (300x200)</div>
+            <img class="ph" src="../assets/img/productos/manzana-fuji.jpg" alt="Manzanas Fuji apiladas en un cajón de madera" loading="lazy">
             <h2>Manzana Fuji</h2>
           </a>
           <p class="precio">$1.290</p>
@@ -87,8 +80,7 @@
 
         <li class="card-producto">
           <a href="producto-detalle.html?codigo=FR-002">
-            <!-- IMAGEN: foto del producto, 300x200 px -> assets/img/platano.jpg -->
-            <div class="ph">IMAGEN PRODUCTO (300x200)</div>
+            <img class="ph" src="../assets/img/productos/platano.jpg" alt="Plátanos de Ecuador" loading="lazy">
             <h2>Plátano de Ecuador</h2>
           </a>
           <p class="precio">$1.490</p>
@@ -97,8 +89,7 @@
 
         <li class="card-producto">
           <a href="producto-detalle.html?codigo=FR-003">
-            <!-- IMAGEN: foto del producto, 300x200 px -> assets/img/naranja.jpg -->
-            <div class="ph">IMAGEN PRODUCTO (300x200)</div>
+            <img class="ph" src="../assets/img/productos/naranja.jpg" alt="Naranjas Valencia" loading="lazy">
             <h2>Naranja Valencia</h2>
           </a>
           <p class="precio">$3.590</p>
@@ -107,8 +98,7 @@
 
         <li class="card-producto">
           <a href="producto-detalle.html?codigo=FR-004">
-            <!-- IMAGEN: foto del producto, 300x200 px -> assets/img/frutilla.jpg -->
-            <div class="ph">IMAGEN PRODUCTO (300x200)</div>
+            <img class="ph" src="../assets/img/productos/frutilla.jpg" alt="Frutillas frescas en una bandeja" loading="lazy">
             <h2>Frutilla</h2>
           </a>
           <p class="precio">$2.490</p>
@@ -117,8 +107,7 @@
 
         <li class="card-producto">
           <a href="producto-detalle.html?codigo=VE-001">
-            <!-- IMAGEN: foto del producto, 300x200 px -> assets/img/tomate.jpg -->
-            <div class="ph">IMAGEN PRODUCTO (300x200)</div>
+            <img class="ph" src="../assets/img/productos/tomate.jpg" alt="Tomates Limachino" loading="lazy">
             <h2>Tomate Limachino</h2>
           </a>
           <p class="precio">$1.990</p>
@@ -127,8 +116,7 @@
 
         <li class="card-producto">
           <a href="producto-detalle.html?codigo=VE-002">
-            <!-- IMAGEN: foto del producto, 300x200 px -> assets/img/palta.jpg -->
-            <div class="ph">IMAGEN PRODUCTO (300x200)</div>
+            <img class="ph" src="../assets/img/productos/palta.jpg" alt="Paltas Hass cortadas por la mitad" loading="lazy">
             <h2>Palta Hass</h2>
           </a>
           <p class="precio">$4.990</p>
@@ -137,8 +125,7 @@
 
         <li class="card-producto">
           <a href="producto-detalle.html?codigo=VE-003">
-            <!-- IMAGEN: foto del producto, 300x200 px -> assets/img/zanahoria.jpg -->
-            <div class="ph">IMAGEN PRODUCTO (300x200)</div>
+            <img class="ph" src="../assets/img/productos/zanahoria.jpg" alt="Zanahorias frescas" loading="lazy">
             <h2>Zanahoria</h2>
           </a>
           <p class="precio">$990</p>
@@ -147,8 +134,7 @@
 
         <li class="card-producto">
           <a href="producto-detalle.html?codigo=VE-004">
-            <!-- IMAGEN: foto del producto, 300x200 px -> assets/img/lechuga.jpg -->
-            <div class="ph">IMAGEN PRODUCTO (300x200)</div>
+            <img class="ph" src="../assets/img/productos/lechuga.jpg" alt="Lechuga escarola fresca" loading="lazy">
             <h2>Lechuga escarola</h2>
           </a>
           <p class="precio">$1.190</p>
@@ -157,8 +143,7 @@
 
         <li class="card-producto">
           <a href="producto-detalle.html?codigo=OR-001">
-            <!-- IMAGEN: foto del producto, 300x200 px -> assets/img/mix-organico.jpg -->
-            <div class="ph">IMAGEN PRODUCTO (300x200)</div>
+            <img class="ph" src="../assets/img/productos/mix-organico.jpg" alt="Caja con mix orgánico de temporada" loading="lazy">
             <h2>Mix orgánico de temporada</h2>
           </a>
           <p class="precio">$8.990</p>
@@ -167,8 +152,7 @@
 
         <li class="card-producto">
           <a href="producto-detalle.html?codigo=OR-002">
-            <!-- IMAGEN: foto del producto, 300x200 px -> assets/img/quinoa.jpg -->
-            <div class="ph">IMAGEN PRODUCTO (300x200)</div>
+            <img class="ph" src="../assets/img/productos/quinoa.jpg" alt="Quinoa orgánica" loading="lazy">
             <h2>Quinoa orgánica</h2>
           </a>
           <p class="precio">$5.490</p>
@@ -177,8 +161,7 @@
 
         <li class="card-producto">
           <a href="producto-detalle.html?codigo=OR-003">
-            <!-- IMAGEN: foto del producto, 300x200 px -> assets/img/miel.jpg -->
-            <div class="ph">IMAGEN PRODUCTO (300x200)</div>
+            <img class="ph" src="../assets/img/productos/miel.jpg" alt="Frasco de miel de ulmo" loading="lazy">
             <h2>Miel de ulmo</h2>
           </a>
           <p class="precio">$6.990</p>
@@ -187,8 +170,7 @@
 
         <li class="card-producto">
           <a href="producto-detalle.html?codigo=FR-005">
-            <!-- IMAGEN: foto del producto, 300x200 px -> assets/img/muestra-gratis.jpg -->
-            <div class="ph">IMAGEN PRODUCTO (300x200)</div>
+            <img class="ph" src="../assets/img/productos/muestra-gratis.jpg" alt="Muestra gratuita de frutas de temporada" loading="lazy">
             <h2>Muestra de temporada</h2>
           </a>
           <!-- Producto con precio 0: se considera FREE según las reglas de negocio -->
@@ -226,9 +208,12 @@
                maxlength="100" autocomplete="email" required>
         <button type="submit">Suscribirse</button>
       </form>
-      <p><small>&copy; 2026 Huerto Verde · Mockup entrega 1 DSY1104</small></p>
+      <p><small>&copy; 2026 Huerto Verde · Entrega 1 DSY1104</small></p>
     </div>
   </footer>
 
+  <!-- Catálogo compartido y contador/carrito -->
+  <script src="../js/productos.js"></script>
+  <script src="../js/carrito.js"></script>
 </body>
 </html>

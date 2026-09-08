@@ -24,8 +24,8 @@
     </ul>
     <div class="menu-pie">
       <ul>
-        <li><a href="../index.html">Ir a la tienda</a></li>
-        <li><a href="../login.html">Cerrar sesión</a></li>
+        <li><a href="../usuario/index.html">Ir a la tienda</a></li>
+        <li><a href="../usuario/login.html">Cerrar sesión</a></li>
       </ul>
     </div>
   </nav>
@@ -41,24 +41,7 @@
 
     <main>
 
-      <!-- ============================================================
-           FORMULARIO NUEVO PRODUCTO
-           El mismo marcado se reutiliza en producto-editar.html.
-
-           REGLAS DE VALIDACIÓN (JS):
-             Código producto  requerido · texto · min 3 · sin máximo
-                              debe ser único en el catálogo
-             Nombre           requerido · max 100
-             Descripción      opcional  · max 500
-             Precio           requerido · min 0 (0 = producto FREE)
-                              sin máximo · admite decimales
-             Stock            requerido · min 0 · sin máximo
-                              sólo números enteros
-             Stock crítico    opcional  · min 0 · sólo enteros
-                              dispara la alerta cuando stock <= stock crítico
-             Categoría        requerida · select
-             Imagen           opcional
-           ============================================================ -->
+      <!-- I left this form ready to validate and create products. -->
       <section class="caja-form" style="max-width:720px;margin-left:0;">
         <h2>Datos del producto</h2>
 
@@ -101,7 +84,7 @@
                       aria-describedby="ayuda-descripcion error-descripcion"></textarea>
             <!-- JS: contador de caracteres en vivo -->
             <small class="ayuda" id="ayuda-descripcion">
-              Máximo 500 caracteres. Quedan <span data-contador="descripcion">500</span>.
+              Máximo 500 caracteres. Quedan <span id="contador-descripcion" data-contador="descripcion">500</span>.
             </small>
             <p class="error" id="error-descripcion" role="alert" hidden></p>
           </div>
@@ -139,10 +122,7 @@
             <small class="ayuda" id="ayuda-imagen">Formatos JPG, PNG o WEBP. Tamaño recomendado 800x600 px.</small>
             <p class="error" id="error-imagen" role="alert" hidden></p>
 
-            <!-- IMAGEN: previsualización de la imagen cargada, 200x150 px.
-                 JS: al seleccionar el archivo, reemplazar este bloque por
-                 la vista previa generada con FileReader. -->
-            <div class="ph ph-mini" data-preview="imagen">PREVISUALIZACIÓN (200x150)</div>
+            <img class="ph ph-mini" data-preview="imagen" alt="Vista previa de la imagen seleccionada" hidden>
           </div>
 
           <div class="campo">
@@ -162,11 +142,14 @@
     </main>
 
     <footer>
-      <p><small>Panel de administración · Mockup entrega 1 DSY1104</small></p>
+      <p><small>Panel de administración · Huerto Verde · Entrega 1 DSY1104</small></p>
     </footer>
 
   </div>
 </div>
-    <script src="../js/validaciones-admin.js"></script>
+
+<!-- type="module" porque el archivo importa comunasPorRegion desde
+     js/regiones.js. Los módulos se ejecutan diferidos. -->
+<script type="module" src="../js/validaciones-admin.js"></script>
 </body>
 </html>

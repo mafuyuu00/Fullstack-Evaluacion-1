@@ -26,7 +26,7 @@
     <a class="cart-link" href="carrito.html">
       <!-- IMAGEN: icono de carrito, 24x24 px -->
       <span class="icono-carrito" aria-hidden="true"></span>
-      Cart (<span data-cart-count>0</span>)
+      Cart (<span id="contador-carrito" data-cart-count>0</span>)
     </a>
   </header>
 
@@ -39,60 +39,48 @@
         <li aria-hidden="true">&gt;</li>
         <li><a href="productos.html?categoria=frutas">Frutas</a></li>
         <li aria-hidden="true">&gt;</li>
-        <li><span aria-current="page">Manzana Fuji</span></li>
+        <li><span id="detalle-breadcrumb" aria-current="page">Manzana Fuji</span></li>
       </ul>
     </nav>
 
-    <!-- ============================================================
-         DETALLE DEL PRODUCTO
-         JS: los datos se leen del arreglo de productos usando el
-         parámetro ?codigo= de la URL.
-         ============================================================ -->
-    <article class="detalle-producto">
+    <!-- I left this article ready to load the product from the URL code. -->
+    <article id="detalle-producto" class="detalle-producto">
 
       <div class="galeria">
-        <!-- IMAGEN: foto principal del producto, 800x600 px
-             -> assets/img/manzana-fuji-grande.jpg
-             <img src="assets/img/manzana-fuji-grande.jpg" alt="Manzanas Fuji apiladas en un cajón de madera" width="800" height="600"> -->
-        <div class="ph ph-alto">IMAGEN PRINCIPAL DEL PRODUCTO (800x600)</div>
+        <div id="detalle-imagen" class="ph ph-alto">
+          <img class="ph ph-alto" src="../assets/img/productos/manzana-fuji.jpg" alt="Manzanas Fuji apiladas en un cajón de madera" loading="eager">
+        </div>
 
         <!-- Miniaturas de la galería -->
         <ul class="miniaturas" aria-label="Otras vistas del producto">
-          <!-- IMAGEN: miniatura 1, 120x90 px -> assets/img/manzana-fuji-1.jpg -->
-          <li><div class="ph ph-mini">MIN 1</div></li>
-          <!-- IMAGEN: miniatura 2, 120x90 px -> assets/img/manzana-fuji-2.jpg -->
-          <li><div class="ph ph-mini">MIN 2</div></li>
-          <!-- IMAGEN: miniatura 3, 120x90 px -> assets/img/manzana-fuji-3.jpg -->
-          <li><div class="ph ph-mini">MIN 3</div></li>
+          <li><img class="ph ph-mini" src="../assets/img/productos/manzana-fuji.jpg" alt="Vista de Manzana Fuji 1" loading="lazy"></li>
+          <li><img class="ph ph-mini" src="../assets/img/productos/manzana-fuji.jpg" alt="Vista de Manzana Fuji 2" loading="lazy"></li>
+          <li><img class="ph ph-mini" src="../assets/img/productos/manzana-fuji.jpg" alt="Vista de Manzana Fuji 3" loading="lazy"></li>
         </ul>
       </div>
 
       <div class="compra">
-        <h1>Manzana Fuji</h1>
-        <p class="precio"><strong>$1.290</strong> por kilo</p>
+        <h1 id="detalle-nombre">Manzana Fuji</h1>
+        <p id="detalle-precio" class="precio"><strong>$1.290</strong> por kilo</p>
 
         <dl>
           <dt>Código</dt>
-          <dd>FR-001</dd>
+          <dd id="detalle-codigo">FR-001</dd>
           <dt>Categoría</dt>
-          <dd>Frutas</dd>
+          <dd id="detalle-categoria">Frutas</dd>
           <dt>Disponibilidad</dt>
-          <dd>En stock (48 kilos)</dd>
+          <dd id="detalle-disponibilidad">En stock (48 kilos)</dd>
         </dl>
 
         <h2>Descripción</h2>
-        <p>
+        <p id="detalle-descripcion">
           Las manzanas son una fruta deliciosa y versátil, apreciada en todo el
           mundo por su sabor refrescante y sus numerosos beneficios para la salud.
-          Disponibles en una variedad de colores, desde el rojo vibrante hasta el
-          verde brillante y el amarillo dorado, son una opción perfecta para
-          cualquier ocasión, ya sea como refrigerio saludable o como ingrediente
-          de repostería.
         </p>
 
         <!-- JS: el botón añade al carrito la cantidad seleccionada
              y persiste el estado en localStorage -->
-        <form action="#" method="post">
+        <form id="formulario-detalle" action="#" method="post">
           <div class="campo">
             <label for="cantidad">Cantidad</label>
             <select id="cantidad" name="cantidad">
@@ -103,56 +91,52 @@
               <option value="5">5</option>
             </select>
           </div>
-          <button type="submit" class="btn-principal btn-bloque"
+          <button id="boton-anadir-detalle" type="submit" class="btn-principal btn-bloque"
                   data-accion="añadir" data-codigo="FR-001">Añadir al carrito</button>
+          <p id="mensaje-detalle" role="status"></p>
         </form>
 
         <p><a href="carrito.html">Ir al carrito de compras</a></p>
       </div>
     </article>
 
-    <!-- ============================================================
-         PRODUCTOS RELACIONADOS
-         ============================================================ -->
+    <p id="producto-no-encontrado" role="alert" hidden>El producto solicitado no existe.</p>
+
+    <!-- I left this section ready to show related products. -->
     <section aria-labelledby="titulo-relacionados">
       <h2 id="titulo-relacionados">Productos relacionados</h2>
       <ul class="grilla-productos" data-lista="relacionados">
         <li class="card-producto">
           <a href="producto-detalle.html?codigo=FR-002">
-            <!-- IMAGEN: foto del producto, 300x200 px -> assets/img/platano.jpg -->
-            <div class="ph">IMAGEN PRODUCTO (300x200)</div>
+            <img class="ph" src="../assets/img/productos/platano.jpg" alt="Plátanos de Ecuador" loading="lazy">
             <h3>Plátano de Ecuador</h3>
           </a>
           <p class="precio">$1.490</p>
         </li>
         <li class="card-producto">
           <a href="producto-detalle.html?codigo=FR-003">
-            <!-- IMAGEN: foto del producto, 300x200 px -> assets/img/naranja.jpg -->
-            <div class="ph">IMAGEN PRODUCTO (300x200)</div>
+            <img class="ph" src="../assets/img/productos/naranja.jpg" alt="Naranjas Valencia" loading="lazy">
             <h3>Naranja Valencia</h3>
           </a>
           <p class="precio">$3.590</p>
         </li>
         <li class="card-producto">
           <a href="producto-detalle.html?codigo=FR-004">
-            <!-- IMAGEN: foto del producto, 300x200 px -> assets/img/frutilla.jpg -->
-            <div class="ph">IMAGEN PRODUCTO (300x200)</div>
+            <img class="ph" src="../assets/img/productos/frutilla.jpg" alt="Frutillas frescas en una bandeja" loading="lazy">
             <h3>Frutilla</h3>
           </a>
           <p class="precio">$2.490</p>
         </li>
         <li class="card-producto">
           <a href="producto-detalle.html?codigo=VE-002">
-            <!-- IMAGEN: foto del producto, 300x200 px -> assets/img/palta.jpg -->
-            <div class="ph">IMAGEN PRODUCTO (300x200)</div>
+            <img class="ph" src="../assets/img/productos/palta.jpg" alt="Paltas Hass cortadas por la mitad" loading="lazy">
             <h3>Palta Hass</h3>
           </a>
           <p class="precio">$4.990</p>
         </li>
         <li class="card-producto">
           <a href="producto-detalle.html?codigo=OR-001">
-            <!-- IMAGEN: foto del producto, 300x200 px -> assets/img/mix-organico.jpg -->
-            <div class="ph">IMAGEN PRODUCTO (300x200)</div>
+            <img class="ph" src="../assets/img/productos/mix-organico.jpg" alt="Caja con mix orgánico de temporada" loading="lazy">
             <h3>Mix orgánico</h3>
           </a>
           <p class="precio">$8.990</p>
@@ -188,9 +172,12 @@
                maxlength="100" autocomplete="email" required>
         <button type="submit">Suscribirse</button>
       </form>
-      <p><small>&copy; 2026 Huerto Verde · Mockup entrega 1 DSY1104</small></p>
+      <p><small>&copy; 2026 Huerto Verde · Entrega 1 DSY1104</small></p>
     </div>
   </footer>
 
+  <!-- Catálogo compartido, detalle dinámico y contador/carrito -->
+  <script src="../js/productos.js"></script>
+  <script src="../js/carrito.js"></script>
 </body>
 </html>

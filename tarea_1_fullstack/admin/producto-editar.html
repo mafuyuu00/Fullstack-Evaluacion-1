@@ -24,8 +24,8 @@
     </ul>
     <div class="menu-pie">
       <ul>
-        <li><a href="../index.html">Ir a la tienda</a></li>
-        <li><a href="../login.html">Cerrar sesión</a></li>
+        <li><a href="../usuario/index.html">Ir a la tienda</a></li>
+        <li><a href="../usuario/login.html">Cerrar sesión</a></li>
       </ul>
     </div>
   </nav>
@@ -42,12 +42,7 @@
 
     <main>
 
-      <!-- ============================================================
-           FORMULARIO EDITAR PRODUCTO
-           Mismas reglas de validación que "Nuevo producto".
-           JS: cargar los datos del producto indicado en ?codigo= y
-           precargar cada campo del formulario.
-           ============================================================ -->
+      <!-- I left this form ready to load and update the selected product. -->
       <section class="caja-form" style="max-width:720px;margin-left:0;">
         <h2>Datos del producto VE-002</h2>
 
@@ -87,7 +82,7 @@
             <textarea id="descripcion" name="descripcion" rows="5" maxlength="500"
                       aria-describedby="ayuda-descripcion error-descripcion">Palta Hass de calibre mediano, cosechada en Quillota. Cremosa, ideal para untar. Se despacha con punto de maduración de 2 a 3 días.</textarea>
             <small class="ayuda" id="ayuda-descripcion">
-              Máximo 500 caracteres. Quedan <span data-contador="descripcion">348</span>.
+              Máximo 500 caracteres. Quedan <span id="contador-descripcion" data-contador="descripcion">348</span>.
             </small>
             <p class="error" id="error-descripcion" role="alert" hidden></p>
           </div>
@@ -130,8 +125,7 @@
             <small class="ayuda" id="ayuda-imagen">Deja el campo vacío para conservar la imagen actual.</small>
             <p class="error" id="error-imagen" role="alert" hidden></p>
 
-            <!-- IMAGEN: imagen actual del producto, 200x150 px -> ../assets/img/palta.jpg -->
-            <div class="ph ph-mini">IMAGEN ACTUAL (200x150)</div>
+            <img class="ph ph-mini" src="../assets/img/productos/palta.jpg" alt="Paltas Hass cortadas por la mitad" width="200" height="150">
           </div>
 
           <div class="campo">
@@ -153,11 +147,14 @@
     </main>
 
     <footer>
-      <p><small>Panel de administración · Mockup entrega 1 DSY1104</small></p>
+      <p><small>Panel de administración · Huerto Verde · Entrega 1 DSY1104</small></p>
     </footer>
 
   </div>
 </div>
-    <script src="../js/validaciones-admin.js"></script>
+
+<!-- type="module" porque el archivo importa comunasPorRegion desde
+     js/regiones.js. Los módulos se ejecutan diferidos. -->
+<script type="module" src="../js/validaciones-admin.js"></script>
 </body>
 </html>

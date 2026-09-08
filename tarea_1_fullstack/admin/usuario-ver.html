@@ -9,10 +9,7 @@
 </head>
 <body>
 
-<!-- ================================================================
-     MOSTRAR USUARIO (sólo lectura)
-     Acceso: sólo perfil Administrador.
-     ================================================================ -->
+<!-- I left this page as a read-only user view for administrators. -->
 <div class="layout-admin">
 
   <nav class="menu-admin" aria-label="Menú del administrador">
@@ -28,8 +25,8 @@
     </ul>
     <div class="menu-pie">
       <ul>
-        <li><a href="../index.html">Ir a la tienda</a></li>
-        <li><a href="../login.html">Cerrar sesión</a></li>
+        <li><a href="../usuario/index.html">Ir a la tienda</a></li>
+        <li><a href="../usuario/login.html">Cerrar sesión</a></li>
       </ul>
     </div>
   </nav>
@@ -39,7 +36,7 @@
     <header class="encabezado-admin">
       <h1>Camila Rojas Fuentes</h1>
       <div class="acciones-admin">
-        <a class="btn btn-principal" href="usuario-editar.html?run=19011022K">Editar</a>
+        <a class="btn btn-principal" href="usuario-editar.html?run=19011029K">Editar</a>
         <a class="btn" href="usuarios.html">Volver al listado</a>
       </div>
     </header>
@@ -52,21 +49,18 @@
           <li aria-hidden="true">&gt;</li>
           <li><a href="usuarios.html">Usuarios</a></li>
           <li aria-hidden="true">&gt;</li>
-          <li><span aria-current="page">19011022K</span></li>
+          <li><span aria-current="page">19011029K</span></li>
         </ul>
       </nav>
 
       <section aria-labelledby="titulo-ficha">
         <h2 id="titulo-ficha">Ficha del usuario</h2>
 
-        <!-- IMAGEN: foto de perfil del usuario, 120x120 px
-             -> ../assets/img/usuarios/19011022K.jpg
-             Si el usuario no tiene foto se muestra un avatar por defecto. -->
-        <div class="ph ph-mini" style="max-width:120px;">FOTO PERFIL (120x120)</div>
+        <img class="ph ph-mini" src="../assets/img/branding/logo.svg" alt="Avatar predeterminado de usuario" width="120" height="120">
 
         <dl class="ficha">
           <dt>Run</dt>
-          <dd>19011022K</dd>
+          <dd>19011029K</dd>
 
           <dt>Nombre</dt>
           <dd>Camila</dd>
@@ -137,7 +131,7 @@
     </main>
 
     <footer>
-      <p><small>Panel de administración · Mockup entrega 1 DSY1104</small></p>
+      <p><small>Panel de administración · Huerto Verde · Entrega 1 DSY1104</small></p>
     </footer>
 
   </div>

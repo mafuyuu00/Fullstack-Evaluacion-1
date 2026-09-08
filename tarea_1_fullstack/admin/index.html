@@ -9,24 +9,10 @@
 </head>
 <body>
 
-<!-- ================================================================
-     VISTA ADMINISTRADOR - HOME
-     Acceso restringido: sólo usuarios autenticados con perfil
-     Administrador o Vendedor. El control real de sesión y permisos se
-     implementa en JavaScript (y en el backend en las próximas entregas).
-
-     ROLES:
-       Administrador -> acceso total al menú
-       Vendedor      -> sólo Productos (lista y detalle) y Órdenes
-       Cliente       -> no accede a esta zona, se redirige a la tienda
-     ================================================================ -->
+<!-- I left this page as the administrator home with role-based menu access. -->
 <div class="layout-admin">
 
-  <!-- ============================================================
-       MENÚ VERTICAL (barra lateral, siempre visible)
-       JS: ocultar los <li data-rol="administrador"> cuando el usuario
-       autenticado tenga perfil Vendedor.
-       ============================================================ -->
+  <!-- I left this menu ready to hide administrator-only links for vendors. -->
   <nav class="menu-admin" aria-label="Menú del administrador">
     <a class="brand" href="index.html">
       <!-- IMAGEN: logo de la tienda, 32x32 px -> ../assets/img/logo.svg -->
@@ -55,7 +41,7 @@
       <h1>¡Hola, Administrador!</h1>
       <p>
         Sesión iniciada como <strong>admin@duoc.cl</strong>
-        - Perfil: <strong>Administrador</strong>
+        · Perfil: <strong>Administrador</strong>
       </p>
     </header>
 
@@ -136,7 +122,7 @@
     </main>
 
     <footer>
-      <p><small>Panel de administración | Huerto Verde | Entrega 1 DSY1104</small></p>
+      <p><small>Panel de administración · Huerto Verde · Entrega 1 DSY1104</small></p>
     </footer>
 
   </div>

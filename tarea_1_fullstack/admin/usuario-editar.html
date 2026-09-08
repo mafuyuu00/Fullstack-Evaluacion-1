@@ -24,8 +24,8 @@
     </ul>
     <div class="menu-pie">
       <ul>
-        <li><a href="../index.html">Ir a la tienda</a></li>
-        <li><a href="../login.html">Cerrar sesión</a></li>
+        <li><a href="../usuario/index.html">Ir a la tienda</a></li>
+        <li><a href="../usuario/login.html">Cerrar sesión</a></li>
       </ul>
     </div>
   </nav>
@@ -35,21 +35,14 @@
     <header class="encabezado-admin">
       <h1>Editar usuario</h1>
       <div class="acciones-admin">
-        <a class="btn" href="usuario-ver.html?run=19011022K">Ver ficha</a>
+        <a class="btn" href="usuario-ver.html?run=19011029K">Ver ficha</a>
         <a class="btn" href="usuarios.html">Volver al listado</a>
       </div>
     </header>
 
     <main>
 
-      <!-- ============================================================
-           FORMULARIO EDITAR USUARIO
-           Mismas reglas de validación que "Nuevo usuario".
-           JS: cargar los datos del usuario indicado en ?run= y
-           precargar cada campo. El Run no se puede modificar porque es
-           la clave del registro.
-           La contraseña sólo se actualiza si se completa el campo.
-           ============================================================ -->
+      <!-- I left this form ready to load and update the selected user. -->
       <section class="caja-form" style="max-width:720px;margin-left:0;">
         <h2>Datos de Camila Rojas Fuentes</h2>
 
@@ -57,7 +50,7 @@
 
           <div class="campo">
             <label for="run">Run</label>
-            <input type="text" id="run" name="run" value="19011022K" minlength="7" maxlength="9"
+            <input type="text" id="run" name="run" value="19011029K" minlength="7" maxlength="9"
                    readonly aria-describedby="ayuda-run">
             <small class="ayuda" id="ayuda-run">El Run no se puede modificar, es la clave del registro.</small>
           </div>
@@ -109,24 +102,19 @@
           <div class="fila">
             <div class="campo">
               <label for="region">Región</label>
-              <select id="region" name="region" aria-describedby="error-region" required>
+              <!-- I left this select ready to restore the saved region and commune. -->
+              <select id="region" name="region" data-region-guardada="Metropolitana de Santiago" aria-describedby="error-region" required>
                 <option value="">-- Seleccione la región --</option>
-                <option value="13" selected>Región Metropolitana de Santiago</option>
-                <option value="09">Región de La Araucanía</option>
-                <option value="16">Región de Ñuble</option>
-                <option value="07">Región del Maule</option>
-                <option value="05">Región de Valparaíso</option>
               </select>
               <p class="error" id="error-region" role="alert" hidden></p>
             </div>
 
             <div class="campo">
               <label for="comuna">Comuna</label>
-              <!-- JS: al cambiar la región se vuelve a poblar este select -->
-              <select id="comuna" name="comuna" aria-describedby="error-comuna" required>
+              <!-- Al cambiar la región, escribirComunas() vuelve a poblar
+                   este select con las comunas que corresponden. -->
+              <select id="comuna" name="comuna" data-comuna-guardada="Santiago" aria-describedby="error-comuna" required>
                 <option value="">-- Seleccione la comuna --</option>
-                <option value="13101" selected>Santiago</option>
-                <option value="13123">Maipú</option>
               </select>
               <p class="error" id="error-comuna" role="alert" hidden></p>
             </div>
@@ -164,7 +152,7 @@
             <button type="submit" class="btn-principal">Guardar cambios</button>
             <a class="btn" href="usuarios.html">Cancelar</a>
             <!-- JS: confirmar antes de eliminar definitivamente -->
-            <button type="button" data-accion="eliminar" data-run="19011022K">Eliminar usuario</button>
+            <button type="button" data-accion="eliminar" data-run="19011029K">Eliminar usuario</button>
           </p>
         </form>
       </section>
@@ -172,11 +160,14 @@
     </main>
 
     <footer>
-      <p><small>Panel de administración · Mockup entrega 1 DSY1104</small></p>
+      <p><small>Panel de administración · Huerto Verde · Entrega 1 DSY1104</small></p>
     </footer>
 
   </div>
 </div>
-    <script src="../js/validaciones-admin.js"></script>
+
+<!-- type="module" porque el archivo importa comunasPorRegion desde
+     js/regiones.js. Los módulos se ejecutan diferidos. -->
+<script type="module" src="../js/validaciones-admin.js"></script>
 </body>
 </html>

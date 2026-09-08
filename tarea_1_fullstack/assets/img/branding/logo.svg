@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" role="img" aria-labelledby="title">
+  <title>Huerto Verde</title>
+  <circle cx="20" cy="20" r="18" fill="#0a7d32"/>
+  <path d="M11 24c7-1 12-5 15-12 5 7 2 16-6 18-4 1-7-1-9-6Z" fill="#b9e769"/>
+  <path d="M13 27c3-5 7-9 13-13" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+</svg>

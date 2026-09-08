@@ -24,8 +24,8 @@
     </ul>
     <div class="menu-pie">
       <ul>
-        <li><a href="../index.html">Ir a la tienda</a></li>
-        <li><a href="../login.html">Cerrar sesión</a></li>
+        <li><a href="../usuario/index.html">Ir a la tienda</a></li>
+        <li><a href="../usuario/login.html">Cerrar sesión</a></li>
       </ul>
     </div>
   </nav>
@@ -41,25 +41,7 @@
 
     <main>
 
-      <!-- ============================================================
-           FORMULARIO NUEVO USUARIO
-           Es el mismo conjunto de campos del registro público
-           (registro.html), más el campo "Tipo de usuario", que sólo
-           existe en la vista administrativa.
-
-           REGLAS DE VALIDACIÓN (JS):
-             Run              requerido · sin puntos ni guion (ej: 19011022K)
-                              min 7 · max 9 · dígito verificador válido
-             Nombre           requerido · max 50
-             Apellidos        requerido · max 100
-             Correo           requerido · max 100
-                              sólo @duoc.cl, @profesor.duoc.cl y @gmail.com
-             Fecha nacimiento opcional
-             Tipo de usuario  requerido · Administrador, Cliente o Vendedor
-             Región / Comuna  desde el arreglo de regiones de JS;
-                              al cambiar la región se recargan las comunas
-             Dirección        requerido · max 300
-           ============================================================ -->
+      <!-- I left this form ready to validate and create users by role. -->
       <section class="caja-form" style="max-width:720px;margin-left:0;">
         <h2>Datos del usuario</h2>
 
@@ -68,9 +50,9 @@
           <div class="campo">
             <label for="run">Run</label>
             <input type="text" id="run" name="run" minlength="7" maxlength="9"
-                   placeholder="19011022K" autocomplete="off"
+                   placeholder="19011029K" autocomplete="off"
                    aria-describedby="ayuda-run error-run" required>
-            <small class="ayuda" id="ayuda-run">Sin puntos ni guion. Ejemplo: 19011022K</small>
+            <small class="ayuda" id="ayuda-run">Sin puntos ni guion. Ejemplo: 19011029K</small>
             <p class="error" id="error-run" role="alert" hidden></p>
           </div>
 
@@ -109,10 +91,7 @@
 
             <div class="campo">
               <label for="tipo-usuario">Tipo de usuario</label>
-              <!-- Perfiles del sistema:
-                   Administrador -> acceso total
-                   Vendedor      -> lista y detalle de productos y órdenes
-                   Cliente       -> sólo la tienda -->
+              <!-- I left this profile note to explain each system role. -->
               <select id="tipo-usuario" name="tipo-usuario" aria-describedby="error-tipo-usuario" required>
                 <option value="">-- Seleccione el perfil --</option>
                 <option value="administrador">Administrador</option>
@@ -126,29 +105,19 @@
           <div class="fila">
             <div class="campo">
               <label for="region">Región</label>
-              <!-- JS: las <option> se generan desde el arreglo de regiones
-                   entregado como material complementario -->
+              <!-- I left this select populated from the shared region data. -->
               <select id="region" name="region" aria-describedby="error-region" required>
                 <option value="">-- Seleccione la región --</option>
-                <option value="13">Región Metropolitana de Santiago</option>
-                <option value="09">Región de La Araucanía</option>
-                <option value="16">Región de Ñuble</option>
-                <option value="07">Región del Maule</option>
-                <option value="05">Región de Valparaíso</option>
               </select>
               <p class="error" id="error-region" role="alert" hidden></p>
             </div>
 
             <div class="campo">
               <label for="comuna">Comuna</label>
-              <!-- JS: al cambiar la región se vuelve a poblar este select -->
+              <!-- Al cambiar la región, escribirComunas() vuelve a poblar
+                   este select con las comunas que corresponden. -->
               <select id="comuna" name="comuna" aria-describedby="error-comuna" required>
                 <option value="">-- Seleccione la comuna --</option>
-                <option value="13101">Santiago</option>
-                <option value="13123">Maipú</option>
-                <option value="07401">Linares</option>
-                <option value="07403">Longaví</option>
-                <option value="08101">Concepción</option>
               </select>
               <p class="error" id="error-comuna" role="alert" hidden></p>
             </div>
@@ -189,11 +158,14 @@
     </main>
 
     <footer>
-      <p><small>Panel de administración · Mockup entrega 1 DSY1104</small></p>
+      <p><small>Panel de administración · Huerto Verde · Entrega 1 DSY1104</small></p>
     </footer>
 
   </div>
 </div>
-    <script src="../js/validaciones-admin.js"></script>
+
+<!-- type="module" porque el archivo importa comunasPorRegion desde
+     js/regiones.js. Los módulos se ejecutan diferidos. -->
+<script type="module" src="../js/validaciones-admin.js"></script>
 </body>
 </html>

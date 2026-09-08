@@ -9,11 +9,7 @@
 </head>
 <body>
 
-<!-- ================================================================
-     MOSTRAR PRODUCTO (sólo lectura)
-     Es la única vista de productos a la que también accede el perfil
-     Vendedor, junto con el listado.
-     ================================================================ -->
+<!-- I left this page as a read-only product view for permitted roles. -->
 <div class="layout-admin">
 
   <nav class="menu-admin" aria-label="Menú del administrador">
@@ -29,8 +25,8 @@
     </ul>
     <div class="menu-pie">
       <ul>
-        <li><a href="../index.html">Ir a la tienda</a></li>
-        <li><a href="../login.html">Cerrar sesión</a></li>
+        <li><a href="../usuario/index.html">Ir a la tienda</a></li>
+        <li><a href="../usuario/login.html">Cerrar sesión</a></li>
       </ul>
     </div>
   </nav>
@@ -91,9 +87,7 @@
 
           <dt>Imagen</dt>
           <dd>
-            <!-- IMAGEN: foto del producto, 400x300 px -> ../assets/img/palta.jpg
-                 <img src="../assets/img/palta.jpg" alt="Paltas Hass cortadas por la mitad" width="400" height="300"> -->
-            <div class="ph" style="max-width:400px;">IMAGEN DEL PRODUCTO (400x300)</div>
+            <img class="ph" src="../assets/img/productos/palta.jpg" alt="Paltas Hass cortadas por la mitad" width="400" height="300">
           </dd>
 
           <dt>Última modificación</dt>
@@ -105,14 +99,14 @@
         <h2 id="titulo-vista-tienda">Vista pública</h2>
         <p>
           Así ve el cliente este producto:
-          <a href="../producto-detalle.html?codigo=VE-002">abrir el detalle en la tienda</a>.
+          <a href="../usuario/producto-detalle.html?codigo=VE-002">abrir el detalle en la tienda</a>.
         </p>
       </section>
 
     </main>
 
     <footer>
-      <p><small>Panel de administración · Mockup entrega 1 DSY1104</small></p>
+      <p><small>Panel de administración · Huerto Verde · Entrega 1 DSY1104</small></p>
     </footer>
 
   </div>

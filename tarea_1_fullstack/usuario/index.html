@@ -4,19 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Huerto Verde | Tienda online de frutas y verduras</title>
-  <meta name="description" content="Tienda online de frutas y verduras frescas. Mockup entrega 1 - DSY1104.">
+  <meta name="description" content="Tienda online de frutas y verduras frescas. Entrega 1 - DSY1104.">
   <link rel="stylesheet" href="../css/estilos.css">
 </head>
 <body>
 
-  <!-- ============================================================
-       HEADER + MENÚ DE NAVEGACIÓN (se repite en todas las vistas
-       de la tienda). Incluye logo y carrito de compra.
-       ============================================================ -->
+  <!-- I left this header shared across the store pages. -->
   <header class="site-header">
     <a class="brand" href="index.html">
-      <!-- IMAGEN: logo de la tienda, 40x40 px -> assets/img/logo.svg
-           <img src="assets/img/logo.svg" alt="Logo de Huerto Verde" width="40" height="40"> -->
+      <!-- Logo de la tienda: el fondo del elemento usa assets/img/branding/logo.svg. -->
       <span class="logo-box" aria-hidden="true"></span>
       <span>Huerto Verde</span>
     </a>
@@ -34,7 +30,7 @@
     <a class="cart-link" href="carrito.html">
       <!-- IMAGEN: icono de carrito de compra, 24x24 px -> assets/img/icono-carrito.svg -->
       <span class="icono-carrito" aria-hidden="true"></span>
-      Cart (<span data-cart-count>0</span>)
+      Cart (<span id="contador-carrito" data-cart-count>0</span>)
       <span class="oculto-visual">productos en el carrito</span>
     </a>
   </header>
@@ -48,9 +44,7 @@
 
   <main class="contenedor">
 
-    <!-- ============================================================
-         COMPONENTE PRINCIPAL (hero): información + imagen de la tienda
-         ============================================================ -->
+    <!-- I left this hero section to introduce the store and its image. -->
     <section class="hero" aria-labelledby="titulo-hero">
       <div>
         <h1 id="titulo-hero">TIENDA ONLINE</h1>
@@ -62,18 +56,11 @@
         <p><a class="btn" href="productos.html">Ver productos</a></p>
       </div>
 
-      <!-- IMAGEN: fotografía principal de la tienda, 640x400 px
-           -> assets/img/hero-tienda.jpg
-           <img src="assets/img/hero-tienda.jpg" alt="Cajones con frutas y verduras recién cosechadas" width="640" height="400"> -->
-      <div class="ph ph-alto">IMAGEN PRINCIPAL DE LA TIENDA (640x400)</div>
+      <img class="ph ph-alto hero-imagen" src="../assets/img/productos/mix-organico.jpg"
+           alt="Cajones con frutas y verduras frescas" loading="eager">
     </section>
 
-    <!-- ============================================================
-         LISTA DE PRODUCTOS DESTACADOS
-         Cada tarjeta muestra imagen, nombre y precio.
-         En la entrega final este listado se genera con JavaScript
-         recorriendo el arreglo de productos.
-         ============================================================ -->
+    <!-- I left this section ready to show featured products. -->
     <section aria-labelledby="titulo-destacados">
       <h2 id="titulo-destacados">Productos destacados</h2>
 
@@ -82,8 +69,7 @@
 
         <li class="card-producto">
           <a href="producto-detalle.html?codigo=FR-001">
-            <!-- IMAGEN: foto del producto, 300x200 px -> assets/img/manzana-fuji.jpg -->
-            <div class="ph">IMAGEN PRODUCTO (300x200)</div>
+            <img class="ph" src="../assets/img/productos/manzana-fuji.jpg" alt="Manzana Fuji" loading="lazy">
             <h3>Manzana Fuji</h3>
           </a>
           <p>Kilo · Categoría: Frutas</p>
@@ -92,8 +78,7 @@
 
         <li class="card-producto">
           <a href="producto-detalle.html?codigo=FR-002">
-            <!-- IMAGEN: foto del producto, 300x200 px -> assets/img/platano.jpg -->
-            <div class="ph">IMAGEN PRODUCTO (300x200)</div>
+            <img class="ph" src="../assets/img/productos/platano.jpg" alt="Plátano de Ecuador" loading="lazy">
             <h3>Plátano de Ecuador</h3>
           </a>
           <p>Kilo · Categoría: Frutas</p>
@@ -102,8 +87,7 @@
 
         <li class="card-producto">
           <a href="producto-detalle.html?codigo=VE-001">
-            <!-- IMAGEN: foto del producto, 300x200 px -> assets/img/tomate.jpg -->
-            <div class="ph">IMAGEN PRODUCTO (300x200)</div>
+            <img class="ph" src="../assets/img/productos/tomate.jpg" alt="Tomate Limachino" loading="lazy">
             <h3>Tomate Limachino</h3>
           </a>
           <p>Kilo · Categoría: Verduras</p>
@@ -112,8 +96,7 @@
 
         <li class="card-producto">
           <a href="producto-detalle.html?codigo=VE-002">
-            <!-- IMAGEN: foto del producto, 300x200 px -> assets/img/palta.jpg -->
-            <div class="ph">IMAGEN PRODUCTO (300x200)</div>
+            <img class="ph" src="../assets/img/productos/palta.jpg" alt="Palta Hass" loading="lazy">
             <h3>Palta Hass</h3>
           </a>
           <p>Kilo · Categoría: Verduras</p>
@@ -122,8 +105,7 @@
 
         <li class="card-producto">
           <a href="producto-detalle.html?codigo=FR-003">
-            <!-- IMAGEN: foto del producto, 300x200 px -> assets/img/naranja.jpg -->
-            <div class="ph">IMAGEN PRODUCTO (300x200)</div>
+            <img class="ph" src="../assets/img/productos/naranja.jpg" alt="Naranja Valencia" loading="lazy">
             <h3>Naranja Valencia</h3>
           </a>
           <p>Malla 3 kilos · Categoría: Frutas</p>
@@ -132,8 +114,7 @@
 
         <li class="card-producto">
           <a href="producto-detalle.html?codigo=OR-001">
-            <!-- IMAGEN: foto del producto, 300x200 px -> assets/img/mix-organico.jpg -->
-            <div class="ph">IMAGEN PRODUCTO (300x200)</div>
+            <img class="ph" src="../assets/img/productos/mix-organico.jpg" alt="Mix orgánico de temporada" loading="lazy">
             <h3>Mix orgánico de temporada</h3>
           </a>
           <p>Caja 5 kilos · Categoría: Orgánicos</p>
@@ -142,8 +123,7 @@
 
         <li class="card-producto">
           <a href="producto-detalle.html?codigo=VE-003">
-            <!-- IMAGEN: foto del producto, 300x200 px -> assets/img/zanahoria.jpg -->
-            <div class="ph">IMAGEN PRODUCTO (300x200)</div>
+            <img class="ph" src="../assets/img/productos/zanahoria.jpg" alt="Zanahoria" loading="lazy">
             <h3>Zanahoria</h3>
           </a>
           <p>Kilo · Categoría: Verduras</p>
@@ -152,8 +132,7 @@
 
         <li class="card-producto">
           <a href="producto-detalle.html?codigo=FR-004">
-            <!-- IMAGEN: foto del producto, 300x200 px -> assets/img/frutilla.jpg -->
-            <div class="ph">IMAGEN PRODUCTO (300x200)</div>
+            <img class="ph" src="../assets/img/productos/frutilla.jpg" alt="Frutilla" loading="lazy">
             <h3>Frutilla</h3>
           </a>
           <p>Bandeja 500 g · Categoría: Frutas</p>
@@ -167,9 +146,7 @@
 
   </main>
 
-  <!-- ============================================================
-       FOOTER (se repite en todas las vistas de la tienda)
-       ============================================================ -->
+  <!-- I left this footer shared across the store pages. -->
   <footer class="site-footer">
     <div>
       <p><strong>Huerto Verde</strong></p>
@@ -204,10 +181,12 @@
                placeholder="Ingresa tu correo" maxlength="100" autocomplete="email" required>
         <button type="submit">Suscribirse</button>
       </form>
-      <p><small>&copy; 2026 Huerto Verde · Mockup entrega 1 DSY1104</small></p>
+      <p><small>&copy; 2026 Huerto Verde · Entrega 1 DSY1104</small></p>
     </div>
   </footer>
 
-  <!-- JS: js/carrito.js mantiene el contador [data-cart-count] leyendo localStorage -->
+  <!-- Catálogo compartido y contador/carrito -->
+  <script src="../js/productos.js"></script>
+  <script src="../js/carrito.js"></script>
 </body>
 </html>
