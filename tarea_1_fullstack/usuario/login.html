@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contacto | Huerto Verde</title>
-  <link rel="stylesheet" href="css/estilos.css">
+  <title>Inicio de sesión | Huerto Verde</title>
+  <link rel="stylesheet" href="../css/estilos.css">
 </head>
 <body>
 
@@ -20,7 +20,7 @@
         <li><a href="productos.html">Productos</a></li>
         <li><a href="nosotros.html">Nosotros</a></li>
         <li><a href="blogs.html">Blogs</a></li>
-        <li><a href="contacto.html" aria-current="page">Contacto</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
       </ul>
     </nav>
     <a class="cart-link" href="carrito.html">
@@ -32,76 +32,63 @@
 
   <main class="contenedor">
 
+    <!-- Logo grande + nombre de la empresa (requisito de esta vista) -->
     <div class="centrado">
-      <!-- IMAGEN: logo grande de la empresa, 220x140 px -> assets/img/logo-grande.svg -->
+      <!-- IMAGEN: logo grande de la empresa, 220x140 px -> assets/img/logo-grande.svg
+           <img src="assets/img/logo-grande.svg" alt="Logo de Huerto Verde" width="220" height="140"> -->
       <div class="ph" style="max-width:220px;margin:24px auto 8px;">LOGO EMPRESA (220x140)</div>
       <p><strong>Huerto Verde</strong></p>
     </div>
 
     <!-- ============================================================
-         FORMULARIO DE CONTACTO
+         INICIO DE SESIÓN
 
          REGLAS DE VALIDACIÓN (JS):
-           Nombre      requerido · max 100
-           Correo      max 100 · sólo @duoc.cl, @profesor.duoc.cl y @gmail.com
-           Comentario  requerido · max 500
+           Correo      requerido · max 100
+                       sólo @duoc.cl, @profesor.duoc.cl y @gmail.com
+           Contraseña  requerida · entre 4 y 10 caracteres
+
+         Según el rol autenticado el sistema redirige a:
+           Administrador -> admin/index.html (acceso total)
+           Vendedor      -> admin/productos.html (sólo productos y órdenes)
+           Cliente       -> index.html (sólo la tienda)
          ============================================================ -->
-    <section class="caja-form" aria-labelledby="titulo-contacto">
-      <h1 id="titulo-contacto">Formulario de contacto</h1>
+    <section class="caja-form" aria-labelledby="titulo-login">
+      <h1 id="titulo-login">Inicio de sesión</h1>
 
       <form action="#" method="post" novalidate autocomplete="on">
 
         <div class="campo">
-          <label for="nombre">Nombre completo</label>
-          <input type="text" id="nombre" name="nombre" maxlength="100"
-                 autocomplete="name" aria-describedby="error-nombre" required>
-          <p class="error" id="error-nombre" role="alert" hidden></p>
-        </div>
-
-        <div class="campo">
           <label for="correo">Correo</label>
           <input type="email" id="correo" name="correo" maxlength="100"
-                 autocomplete="email" aria-describedby="ayuda-correo error-correo">
-          <small class="ayuda" id="ayuda-correo">Opcional. Sólo dominios @duoc.cl, @profesor.duoc.cl y @gmail.com</small>
+                 autocomplete="username" aria-describedby="ayuda-correo error-correo" required>
+          <small class="ayuda" id="ayuda-correo">Sólo dominios @duoc.cl, @profesor.duoc.cl y @gmail.com</small>
           <p class="error" id="error-correo" role="alert" hidden></p>
         </div>
 
         <div class="campo">
-          <label for="motivo">Motivo</label>
-          <select id="motivo" name="motivo">
-            <option value="consulta" selected>Consulta general</option>
-            <option value="pedido">Estado de un pedido</option>
-            <option value="reclamo">Reclamo</option>
-            <option value="sugerencia">Sugerencia</option>
-          </select>
+          <label for="contrasena">Contraseña</label>
+          <input type="password" id="contrasena" name="contrasena" minlength="4" maxlength="10"
+                 autocomplete="current-password" aria-describedby="ayuda-contrasena error-contrasena" required>
+          <small class="ayuda" id="ayuda-contrasena">Entre 4 y 10 caracteres</small>
+          <p class="error" id="error-contrasena" role="alert" hidden></p>
         </div>
 
         <div class="campo">
-          <label for="comentario">Comentario</label>
-          <textarea id="comentario" name="comentario" rows="6" maxlength="500"
-                    aria-describedby="ayuda-comentario error-comentario" required></textarea>
-          <!-- JS: actualizar el contador de caracteres restantes en vivo -->
-          <small class="ayuda" id="ayuda-comentario">
-            Máximo 500 caracteres. Quedan <span data-contador="comentario">500</span>.
-          </small>
-          <p class="error" id="error-comentario" role="alert" hidden></p>
+          <label for="recordar" style="display:inline">
+            <input type="checkbox" id="recordar" name="recordar" style="width:auto">
+            Recordar mi correo en este equipo
+          </label>
         </div>
 
         <p class="centrado">
-          <button type="submit" class="btn-principal">Enviar mensaje</button>
+          <button type="submit" class="btn-principal">Iniciar sesión</button>
+        </p>
+
+        <p class="centrado">
+          ¿No tienes cuenta? <a href="registro.html">Regístrate</a>
         </p>
       </form>
-    </section>
-
-    <!-- Datos de contacto directo -->
-    <section aria-labelledby="titulo-datos">
-      <h2 id="titulo-datos">Otros canales</h2>
-      <address>
-        Av. Siempre Fresca 1234, Santiago de Chile<br>
-        Teléfono: <a href="tel:+56223456789">+56 2 2345 6789</a><br>
-        Correo: <a href="mailto:contacto@huertoverde.cl">contacto@huertoverde.cl</a>
-      </address>
-      <p>Atención de lunes a sábado, de 9:00 a 19:00 horas.</p>
     </section>
 
   </main>
