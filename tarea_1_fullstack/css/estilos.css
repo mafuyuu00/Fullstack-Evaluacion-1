@@ -74,6 +74,11 @@ button:hover,
 .btn-principal:hover { background: #6b8e4e; }
 .btn-pagar { width: 100%; border-color: #355e3b; background: #355e3b; color: #ffffff; text-align: center; }
 .btn-bloque { width: 100%; }
+button:disabled,
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
 
 .articulo-blog { display: flex; gap: 24px; flex-wrap: wrap; margin-bottom: 20px; padding: 20px; background: #e8f0df; border: 1px solid #cbbda9; }
 .articulo-blog > * { flex: 1 1 300px; }
