@@ -2,6 +2,7 @@ const formulario = document.getElementById("formulario-login");
 const inputCorreo = document.getElementById("correo");
 const inputContrasena = document.getElementById("contrasena");
 const mensajeExito = document.getElementById("mensaje-login");
+const botonEnviar = formulario ? formulario.querySelector('button[type="submit"]') : null;
 
 const DOMINIOS_PERMITIDOS = /^(?:duoc\.cl|profesor\.duoc\.cl|gmail\.com)$/i;
 
@@ -22,8 +23,9 @@ function validarCorreo() {
     const valor = inputCorreo.value.trim();
     let mensaje = "";
 
+    // Cambio solicitado: mensaje exacto para dominios no permitidos.
     if (!valor) mensaje = "El correo es obligatorio.";
-    else if (!correoValido(valor)) mensaje = "Use un correo @duoc.cl, @profesor.duoc.cl o @gmail.com.";
+    else if (!correoValido(valor)) mensaje = "Sólo se permiten estos dominios: @duoc.cl, @profesor.duoc.cl, @gmail.com.";
 
     mostrarError(inputCorreo, mensaje);
     inputCorreo.setCustomValidity(mensaje);
@@ -45,7 +47,12 @@ function validarContrasena() {
 function validarFormulario() {
     const correoCorrecto = validarCorreo();
     const contrasenaCorrecta = validarContrasena();
-    return correoCorrecto && contrasenaCorrecta && formulario.checkValidity();
+    const formularioValido = correoCorrecto && contrasenaCorrecta && formulario.checkValidity();
+
+    // Desactivo el botón hasta que el formulario sea válido.
+    if (botonEnviar) botonEnviar.disabled = !formularioValido;
+
+    return formularioValido;
 }
 
 if (formulario && inputCorreo && inputContrasena) {

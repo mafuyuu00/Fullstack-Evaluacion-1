@@ -130,6 +130,16 @@ function validarCorreo(){
         mostrarError(inputCorreo, mensajeError);
         inputCorreo.setCustomValidity(mensajeError);
         actualizarBoton()
+        // Cambio solicitado: mensaje exacto para dominios no permitidos.
+        const mensaje = !valor
+            ? "El correo es obligatorio."
+            : !correoValido(valor)
+                ? "The only allowed domains are: @duoc.cl, @profesor.duoc.cl, @gmail.com."
+                : "";
+
+        mostrarError(inputCorreo, mensaje);
+        inputCorreo.setCustomValidity(mensaje);
+        actualizarBoton();
     });
 }
 

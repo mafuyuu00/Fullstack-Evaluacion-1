@@ -1,4 +1,4 @@
-/* I left this catalog as the shared source for product data and image paths. */
+/* Dejé este catálogo como la fuente compartida de datos de productos y rutas de imágenes. */
 
 const productos = [
     {
@@ -63,7 +63,7 @@ const productos = [
         stock: 100,
         imagen: "../assets/img/productos/muestra-gratis.jpg",
         alt: "Muestra gratuita de frutas de temporada",
-        descripcion: "Muestra gratuita de productos de temporada. Precio FREE.",
+        descripcion: "Muestra gratuita de productos de temporada. Precio GRATIS.",
         destacado: false
     },
     {
@@ -202,7 +202,7 @@ function crearTarjeta(producto, incluirBoton, nivel = "h2") {
     const precio = document.createElement("p");
     precio.className = "precio";
     precio.textContent = producto.precio === 0
-        ? "$0 (FREE)"
+        ? "$0 (GRATIS)"
         : formatoPesos(producto.precio);
     item.appendChild(precio);
 
